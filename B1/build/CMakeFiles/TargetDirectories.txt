@@ -1,8 +1,0 @@
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/install/strip.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/install/local.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/install.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/list_install_components.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/rebuild_cache.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/edit_cache.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/B1.dir
-/home/andrey/Desktop/github/study/Geant/B1/build/CMakeFiles/exampleB1.dir
