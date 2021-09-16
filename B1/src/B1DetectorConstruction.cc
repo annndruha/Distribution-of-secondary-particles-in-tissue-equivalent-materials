@@ -77,7 +77,7 @@ G4VPhysicalVolume* B1DetectorConstruction::Construct()
                     0,                     //its mother  volume
                     false,                 //no boolean operation
                     0,                     //copy number
-                    true);        //overlaps checking
+                    true);                 //overlaps checking
 
   return physWorld;                    
 }

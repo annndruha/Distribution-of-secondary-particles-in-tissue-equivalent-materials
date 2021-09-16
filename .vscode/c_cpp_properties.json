@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "g4install/include/Geant4/**",
+                "g4install/bin"
+            ]
+        }
+    ],
+    "version": 4
+}
