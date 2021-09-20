@@ -1,29 +1,3 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * This  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-//
 /// \file B1DetectorConstruction.cc
 /// \brief Implementation of the B1DetectorConstruction class
 
@@ -31,53 +5,80 @@
 
 #include "G4RunManager.hh"
 #include "G4NistManager.hh"
+
 #include "G4Box.hh"
-#include "G4Cons.hh"
-#include "G4Orb.hh"
-#include "G4Sphere.hh"
-#include "G4Trd.hh"
+#include "G4Para.hh"
+
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
+#include <math.h>
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B1DetectorConstruction::B1DetectorConstruction()
 : G4VUserDetectorConstruction(),
   fScoringVolume(0)
 { }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 B1DetectorConstruction::~B1DetectorConstruction()
 { }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 G4VPhysicalVolume* B1DetectorConstruction::Construct()
 {
-  G4double pX = 20*cm;
-  G4double pY = 20*cm;
-  G4double pZ = 20*cm;
-
-  G4Box* box = new G4Box("Water", pX, pY, pZ);
-
   G4NistManager* nist = G4NistManager::Instance();
-  G4Material* world_mat = nist->FindOrBuildMaterial("G4_WATER");
+
+  // Concrete cube
+  G4double Box_len = 20*cm;
+  G4Box* box = new G4Box("Box", Box_len, Box_len, Box_len);
+  G4Material* concrete = nist->FindOrBuildMaterial("G4_CONCRETE");
+  G4LogicalVolume* logicWorld_box = new G4LogicalVolume(box, concrete, "CONCRETE");
 
 
-  G4LogicalVolume* logicWorld = new G4LogicalVolume(box, world_mat, "Water");
+  // Graphite parallelepiped
+  G4double Para_len = 20*cm;
+  G4double pAlpha = M_PI/4;
+  G4double pTheta = 0;
+  G4double pPhi = 0;
+  G4Para* para = new G4Para("Parallelepiped", Para_len, Para_len, Para_len, pAlpha, pTheta, pPhi);
+  G4Material* graphite = nist->FindOrBuildMaterial("G4_GRAPHITE");
+  G4LogicalVolume* logicWorld_para = new G4LogicalVolume(para, graphite, "GRAPHITE");
+
+  // Air world
+  G4double World_len = 100*cm;
+  G4Box* box_world = new G4Box("World", World_len, World_len, World_len);
+  G4Material* air = nist->FindOrBuildMaterial("G4_AIR");
+  G4LogicalVolume* logicWorld_mother = new G4LogicalVolume(box_world, air, "World");
 
 
   G4VPhysicalVolume* physWorld = 
-  new G4PVPlacement(0,                     //no rotation
-                    G4ThreeVector(),       //at (0,0,0)
-                    logicWorld,            //its logical volume
-                    "World",               //its name
-                    0,                     //its mother  volume
-                    false,                 //no boolean operation
-                    0,                     //copy number
-                    true);                 //overlaps checking
+  new G4PVPlacement(0,
+                    G4ThreeVector(),
+                    logicWorld_mother,
+                    "World",
+                    0,
+                    false,
+                    0,
+                    true);
+
+  new G4PVPlacement(0,
+                    G4ThreeVector(),
+                    logicWorld_para,
+                    "Para",
+                    logicWorld_mother,
+                    false,
+                    0,
+                    true);
+
+  new G4PVPlacement(0,
+                    G4ThreeVector(Box_len, 2*Box_len, 0), // Box located at parallelepiped surface
+                    logicWorld_box,
+                    "Box",
+                    logicWorld_mother,
+                    false,
+                    0,
+                    true);
 
   return physWorld;                    
 }
