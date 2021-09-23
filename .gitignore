@@ -1,3 +1,2 @@
-B1/build/
-build/
+*build*
 .idea
