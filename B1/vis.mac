@@ -17,13 +17,13 @@
 /vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
 
 # ========================= CHANGED BLOCK HW2 =========================
-/vis/modeling/trajectories/create/drawByParticleID
-/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+#/vis/modeling/trajectories/create/drawByParticleID
+#/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
 
-/vis/modeling/trajectories/drawByParticleID-0/set gamma magenta
-/vis/modeling/trajectories/drawByParticleID-0/set proton red
-/vis/modeling/trajectories/drawByParticleID-0/set neutron gray
-/vis/modeling/trajectories/drawByParticleID-0/set alpha green
+#/vis/modeling/trajectories/drawByParticleID-0/set gamma magenta
+#/vis/modeling/trajectories/drawByParticleID-0/set proton red
+#/vis/modeling/trajectories/drawByParticleID-0/set neutron gray
+#/vis/modeling/trajectories/drawByParticleID-0/set alpha green
 
 /vis/geometry/set/colour Box 255 0 255 1 1
 /vis/geometry/set/colour Parallelepiped 0 255 0 1 1
