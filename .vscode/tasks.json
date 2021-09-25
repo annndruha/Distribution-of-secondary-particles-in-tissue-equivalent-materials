@@ -11,9 +11,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/B1"
+                "cwd": "${workspaceFolder}/B1/scripts"
             },
-            "command": "${workspaceFolder}/B1/autobuild.sh"
+            "command": "${workspaceFolder}/B1/scripts/autobuild.sh"
         }
     ]
 }
