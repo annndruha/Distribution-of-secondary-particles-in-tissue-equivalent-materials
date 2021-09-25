@@ -8,7 +8,7 @@
 **Tricks**
 
 * `scripts/autobuild_full.sh` - полностью пересобирает проект: удаляет build, выполняет cmake, make, запуск. Скрипт запускается руками.
-* `scripts/aautobuild.sh` - пересобирает при существующей папке buiild, выполняет cmake, make, запуск
+* `scripts/autobuild.sh` - пересобирает при существующей папке buiild, выполняет cmake, make, запуск
 * `.vscode/tasks.json` запускает `autobuild.sh` через хоткей `ctrl+shift+b`
 * `.vscode/c_cpp_properties.json`- настраивает пути к заголовочным файлам джанта, чтобы была корректная подсветка синтаксиса.
 * `install-geant.sh` - установка geant4.VV.VV.pVV в полностью автоматическом режиме (от 5 мин до 30 мин)
