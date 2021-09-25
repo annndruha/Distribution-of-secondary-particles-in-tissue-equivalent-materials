@@ -7,6 +7,7 @@
 
 **Tricks**
 
-* `.vscode/c_cpp_properties.json` настраивает пути к заголовочным файлам джанта, чтобы была корректная подсветка синтаксиса
-* `autobuild.sh` пересобирает проект: удаляет build, выполняет cmake, make, запуск
+* `.vscode/c_cpp_properties.json`- настраивает пути к заголовочным файлам джанта, чтобы была корректная подсветка синтаксиса.
+* `scripts/autobuild_full.sh` - полностью пересобирает проект: удаляет build, выполняет cmake, make, запуск. Скрипт запускается руками.
+* `scripts/aautobuild.sh` - пересобирает при существующей папке buiild, выполняет cmake, make, запуск
 * `.vscode/tasks.json` запускает `autobuild.sh` через хоткей ctrl+shift+b
