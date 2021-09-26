@@ -1,0 +1,4 @@
+/vis/geometry/set/colour FixedPrime 0 1 0 1 .5
+/vis/geometry/set/colour Phantom 1 0 0 1 .5
+/vis/geometry/set/colour Target 1 1 0 0 1
+/vis/geometry/set/colour __leaf 0 1 1 1 .7
