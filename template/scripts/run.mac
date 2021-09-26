@@ -1,9 +1,0 @@
-# Обобщить и организовать доп конфигурации
-/run/numberOfThreads 4
-/run/initialize
-
-/control/execute gps.mac
-/control/execute scorer.mac
-
-/run/printProgress 100000
-/run/beamOn 1000000
