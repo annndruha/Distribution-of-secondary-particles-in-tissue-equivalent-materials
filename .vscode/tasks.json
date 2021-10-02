@@ -14,6 +14,18 @@
                 "cwd": "${workspaceFolder}/model/scripts"
             },
             "command": "${workspaceFolder}/model/scripts/autobuild.sh"
+        },
+        {
+            "label": "autobuild_full",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/model/scripts"
+            },
+            "command": "${workspaceFolder}/model/scripts/autobuild_full.sh"
         }
     ]
 }
