@@ -28,7 +28,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 {
   G4NistManager* nist = G4NistManager::Instance();
 
-  auto w = nist->FindOrBuildMaterial("G4_W");
+  //auto w = nist->FindOrBuildMaterial("G4_W");
 
   G4Box* solidWorld =
     new G4Box("World",
@@ -49,7 +49,24 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       0,                     //copy number
                       false);                //overlaps checking
 
-  ConstructTarget(logicWorld);
+  //ConstructTarget(logicWorld);
+
+  G4double size = 10*cm;
+  auto solid = new G4Box("Target", size, size, size);
+
+  G4LogicalVolume* logic = new G4LogicalVolume(solid, target_material, "Target");
+
+  new G4PVPlacement(
+    0,
+    G4ThreeVector(target_position_x,
+                  target_position_y,
+                  target_position_z),
+    logic,
+    "Target",
+    logicWorld,
+    false,
+    0,
+    false);
 
   return physWorld;
 }
@@ -57,7 +74,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 
-void ConstructTarget(G4LogicalVolume* _mother_volume){
+/* void ConstructTarget(G4LogicalVolume* _mother_volume){
   G4double size = 10*cm;
   auto solid = new G4Box("Target", size, size, size);
 
@@ -74,4 +91,4 @@ void ConstructTarget(G4LogicalVolume* _mother_volume){
     false,
     0,
     false);
-}
+} */

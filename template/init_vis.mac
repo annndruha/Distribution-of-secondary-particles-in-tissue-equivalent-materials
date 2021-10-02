@@ -1,7 +1,6 @@
 /run/initialize
-
 /vis/open OGL 600x600-0+0
-
+/vis/verbose warnings
 /vis/drawVolume
 
 /vis/viewer/set/viewpointVector -1 0 0
@@ -18,12 +17,11 @@
 
 /vis/scene/endOfEventAction accumulate
 
-/vis/set/colour red
 /vis/set/lineWidth 2
-/vis/scene/add/frame   # Simple frame around the view
 /vis/set/colour        # Revert to default colour (white)
 /vis/set/lineWidth     # Revert to default line width (1.)
-#
+
+/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
 
 /vis/geometry/set/visibility World 0 false
 
@@ -32,6 +30,6 @@
 /vis/viewer/set/viewpointThetaPhi 120 150
 
 /vis/viewer/set/autoRefresh true
-/vis/verbose warnings
+/vis/viewer/set/projection p
 
 /control/execute vis.mac
