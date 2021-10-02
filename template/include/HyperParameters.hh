@@ -127,34 +127,34 @@ constexpr G4double target_position_z = world_size_x / 2.0 - target_size_x / 2.0;
 
 // == == == == == == == == == == == == == == == ==
 // Позиция 1-го фиксированного коллиматора
-constexpr G4double fixed_primary_collimator_position_x
+/* constexpr G4double fixed_primary_collimator_position_x
     = target_position_x;
 
 constexpr G4double fixed_primary_collimator_position_y
     = target_position_y;
 
 constexpr G4double fixed_primary_collimator_position_z
-    = target_position_z - (target_size_z / 2.0 + fixed_primary_collimator_size_z / 2.0);
+    = target_position_z - (target_size_z / 2.0 + fixed_primary_collimator_size_z / 2.0); */
 
 // == == == == == == == == == == == == == == == ==
 // Ионизирующей камеры.
-constexpr G4double ion_chamber_position_x = target_position_x;
+/* constexpr G4double ion_chamber_position_x = target_position_x;
 constexpr G4double ion_chamber_position_y = target_position_y;
 
 constexpr G4double ion_chamber_position_z =
     fixed_primary_collimator_position_z
-    - (fixed_primary_collimator_size_z / 2.0 + ion_chamber_size_z / 2.0);
+    - (fixed_primary_collimator_size_z / 2.0 + ion_chamber_size_z / 2.0); */
 
 // == == == == == == == == == == == == == == == ==
 // Позиция 2-го фиксированного коллиматора
-constexpr G4double fixed_secondary_collimator_position_x
+/* constexpr G4double fixed_secondary_collimator_position_x
     = fixed_primary_collimator_position_x;
 
 constexpr G4double fixed_secondary_collimator_position_y = target_position_y;
 
 constexpr G4double fixed_secondary_collimator_position_z
     = ion_chamber_position_z
-    - (ion_chamber_size_z / 2.0 + fixed_secondary_collimator_size_z / 2.0);
+    - (ion_chamber_size_z / 2.0 + fixed_secondary_collimator_size_z / 2.0); */
 
 // TODO
 // == == == == == == == == == == == == == == == ==
@@ -163,7 +163,7 @@ constexpr G4double fixed_secondary_collimator_position_z
 // == == == == == == == == == == == == == == == ==
 // Позиция фантома.
 
-G4Material* phantom_material
+/* G4Material* phantom_material
     = G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
 
 constexpr G4double phantom_position_x = 0;
@@ -172,6 +172,6 @@ constexpr G4double phantom_position_z
     = fixed_primary_collimator_position_z
       - fixed_primary_collimator_size_z / 2.0
       - 2 * leaf_size_z
-      - 25 * CLHEP::cm;
+      - 25 * CLHEP::cm; */
 
 #endif
