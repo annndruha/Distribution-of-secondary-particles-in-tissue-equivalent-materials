@@ -53,6 +53,8 @@ void RunAction::BeginOfRunAction(const G4Run* run)
 void RunAction::EndOfRunAction(const G4Run* run)
 {
  auto analysis = G4AnalysisManager::Instance();
+ std::stringstream ss;
+ ss << "Run end" << run->GetRunID();
  analysis->Write();
  analysis->CloseFile();
 }
@@ -61,6 +63,8 @@ void RunAction::EndOfRunAction(const G4Run* run)
 
 void RunAction::AddEdep(G4double edep)
 {
+  std::stringstream ss;
+  ss << "Run end" << edep;
 }
 
 

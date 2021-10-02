@@ -15,13 +15,13 @@
 /vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
 /vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
 
-/vis/scene/endOfEventAction accumulate
+/vis/scene/endOfEventAction accumulate 10
 
 /vis/set/lineWidth 2
 /vis/set/colour        # Revert to default colour (white)
-/vis/set/lineWidth     # Revert to default line width (1.)
+/vis/set/lineWidth  # Revert to default line width (1.)
 
-/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
+#/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
 
 /vis/geometry/set/visibility World 0 false
 

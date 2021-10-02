@@ -1,9 +1,14 @@
-# Обобщить и организовать доп конфигурации
-/run/numberOfThreads 4
 /run/initialize
 
-/control/execute gps.mac
-/control/execute scorer.mac
+#/control/execute gps.mac
 
-/run/printProgress 100000
-/run/beamOn 1000000
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/centre 0 0 0 cm
+/gps/pos/radius 1 cm
+
+/gps/direction 0 0 1
+/gps/particle e-
+/gps/energy 10 MeV
+/run/beamOn 10
