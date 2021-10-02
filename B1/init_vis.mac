@@ -1,9 +1,0 @@
-/control/verbose 2 # Set some default verbose
-/control/saveHistory
-/run/verbose 2
-
-#/run/numberOfThreads 4 # Change the default number of threads (in multi-threaded mode)
-
-/run/initialize # Initialize kernel
-
-/control/execute vis.mac # Visualization setting

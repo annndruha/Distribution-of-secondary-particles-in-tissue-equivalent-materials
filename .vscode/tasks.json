@@ -11,9 +11,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/template/scripts"
+                "cwd": "${workspaceFolder}/model/scripts"
             },
-            "command": "${workspaceFolder}/template/scripts/autobuild.sh"
+            "command": "${workspaceFolder}/model/scripts/autobuild.sh"
         }
     ]
 }

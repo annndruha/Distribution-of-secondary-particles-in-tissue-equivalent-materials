@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
-project(prog)
+project(model)
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
@@ -34,23 +34,22 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(prog prog.cc ${sources} ${headers})
-target_link_libraries(prog ${Geant4_LIBRARIES})
+add_executable(main main.cc ${sources} ${headers})
+target_link_libraries(main ${Geant4_LIBRARIES})
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
-# build prog. This is so that we can run the executable directly because it
+# build main. This is so that we can run the executable directly because it
 # relies on these scripts being in the current working directory.
 #
-set(prog_SCRIPTS
+set(main_SCRIPTS
   init_vis.mac
-  gps.mac
   scorer.mac
   run.mac
   vis.mac
   )
 
-foreach(_script ${prog_SCRIPTS})
+foreach(_script ${main_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}
@@ -61,4 +60,4 @@ endforeach()
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-install(TARGETS prog DESTINATION bin)
+install(TARGETS main DESTINATION bin)
