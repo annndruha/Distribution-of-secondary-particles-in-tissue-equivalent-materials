@@ -25,12 +25,19 @@ RunAction::RunAction()
   analysis->SetFirstNtupleId(0);
   analysis->SetFirstNtupleColumnId(0);
 
-  analysis->CreateNtuple("DoseDist", "DD");
+  analysis->CreateNtuple("DoseDist", "Position");
   analysis->CreateNtupleDColumn(0, "eDep");
   analysis->CreateNtupleDColumn(0, "X");
   analysis->CreateNtupleDColumn(0, "Y");
   analysis->CreateNtupleDColumn(0, "Z");
   analysis->FinishNtuple(0);
+
+
+  analysis->CreateNtuple("DoseData", "DD");
+  analysis->CreateNtupleIColumn(1, "particle");
+  analysis->CreateNtupleSColumn(1, "particle_name");
+  analysis->CreateNtupleDColumn(1, "energy");
+  analysis->FinishNtuple(1);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -9,47 +9,35 @@
 
 #include "g4csv.hh"
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-SteppingAction::SteppingAction(EventAction* eventAction)
-: G4UserSteppingAction(),
-  fEventAction(eventAction),
-  fScoringVolume(0)
-{}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+SteppingAction::SteppingAction(EventAction *eventAction)
+    : G4UserSteppingAction(),
+      fEventAction(eventAction),
+      fScoringVolume(0)
+{
+}
 
 SteppingAction::~SteppingAction()
-{}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-void SteppingAction::UserSteppingAction(const G4Step* step)
 {
-  if (!fScoringVolume) {
-    const DetectorConstruction* detectorConstruction
-      = static_cast<const DetectorConstruction*>
-        (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
-    fScoringVolume = detectorConstruction->GetScoringVolume();
-  }
+}
 
+void SteppingAction::UserSteppingAction(const G4Step *step)
+{
   // get volume of the current step
-  G4LogicalVolume* volume
-    = step->GetPreStepPoint()->GetTouchableHandle()
-      ->GetVolume()->GetLogicalVolume();
+  G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
 
   // check if we are in scoring volume
   // G4cout << volume->GetName() << G4endl;
-  if (volume->GetName() != "Phantom") return;
+  if (volume->GetName() != "Target")
+    return;
 
   auto edep = step->GetTotalEnergyDeposit();
+  if (edep == 0)
+    return;
 
-  if(edep == 0) return;
-
-  // G4cout << step->GetTrack()->GetDynamicParticle() << '\t'
-  //        << "Is first: " << step->IsFirstStepInVolume() << '\t'
-  //        <<
-
+  auto track = step->GetTrack();
+  auto particle = track->GetDynamicParticle();
+  auto energy = particle->GetKineticEnergy();
+  auto particle_name = particle->GetDefinition()->GetParticleName();
   auto pos = step->GetPreStepPoint()->GetPosition();
 
   auto analysis = G4AnalysisManager::Instance();
@@ -58,6 +46,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::mm);
   analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::mm);
   analysis->AddNtupleRow(0);
-}
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+  analysis->FillNtupleIColumn(1, 0, (long)particle);
+  analysis->FillNtupleSColumn(1, 1, particle_name);
+  analysis->FillNtupleDColumn(1, 2, energy / CLHEP::MeV);
+  analysis->AddNtupleRow(1);
+}
