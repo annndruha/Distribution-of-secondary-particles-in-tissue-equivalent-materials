@@ -31,8 +31,8 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
     return;
 
   auto edep = step->GetTotalEnergyDeposit();
-  if (edep == 0)
-    return;
+  //if (edep == 0)
+  //  return;
 
   auto track = step->GetTrack();
   auto particle = track->GetDynamicParticle();
@@ -47,8 +47,7 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::mm);
   analysis->AddNtupleRow(0);
 
-  analysis->FillNtupleIColumn(1, 0, (long)particle);
-  analysis->FillNtupleSColumn(1, 1, particle_name);
-  analysis->FillNtupleDColumn(1, 2, energy / CLHEP::MeV);
+  analysis->FillNtupleSColumn(1, 0, particle_name);
+  analysis->FillNtupleDColumn(1, 1, energy / CLHEP::MeV);
   analysis->AddNtupleRow(1);
 }

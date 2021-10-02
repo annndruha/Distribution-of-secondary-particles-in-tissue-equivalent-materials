@@ -34,7 +34,6 @@ RunAction::RunAction()
 
 
   analysis->CreateNtuple("DoseData", "DD");
-  analysis->CreateNtupleIColumn(1, "particle");
   analysis->CreateNtupleSColumn(1, "particle_name");
   analysis->CreateNtupleDColumn(1, "energy");
   analysis->FinishNtuple(1);

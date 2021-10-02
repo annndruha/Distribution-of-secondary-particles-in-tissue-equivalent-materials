@@ -11,9 +11,9 @@
 G4Material* world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 
-constexpr G4double world_size_x = 200 * CLHEP::cm;
-constexpr G4double world_size_y = 200 * CLHEP::cm;
-constexpr G4double world_size_z = 200 * CLHEP::cm;
+constexpr G4double world_size_x = 300 * CLHEP::cm;
+constexpr G4double world_size_y = 300 * CLHEP::cm;
+constexpr G4double world_size_z = 300 * CLHEP::cm;
 
 // == == == == == == == == == == == == == == == == == == == == == == ==
 // Конфигруации тормозной мишени.
