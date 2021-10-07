@@ -1,0 +1,28 @@
+/vis/open OGL 600x600-0+0
+
+/vis/viewer/set/autoRefresh false
+/vis/verbose errors
+
+/vis/drawVolume
+
+/vis/viewer/set/autoRefresh false
+
+/vis/scene/endOfEventAction accumulate
+
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+/vis/geometry/set/visibility World 0 false
+
+/vis/geometry/set/colour Phantom_0 0 0 0 1 0.5
+/vis/geometry/set/colour Phantom_1 0 0 1 0 0.5
+/vis/geometry/set/colour Phantom_2 0 1 0 0 0.5
+/vis/geometry/set/colour Phantom_3 0 0 1 1 0.5
+/vis/geometry/set/colour Phantom_4 0 1 1 1 0.5
+
+/vis/viewer/set/style surface
+
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings

@@ -11,9 +11,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model/scripts"
+                "cwd": "${workspaceFolder}/october/scripts"
             },
-            "command": "${workspaceFolder}/model/scripts/autobuild.sh"
+            "command": "${workspaceFolder}/october/scripts/autobuild.sh"
         },
         {
             "label": "autobuild_full",
@@ -23,9 +23,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model/scripts"
+                "cwd": "${workspaceFolder}/october/scripts"
             },
-            "command": "${workspaceFolder}/model/scripts/autobuild_full.sh"
+            "command": "${workspaceFolder}/october/scripts/autobuild_full.sh"
         }
     ]
 }
