@@ -26,6 +26,18 @@
                 "cwd": "${workspaceFolder}/october/scripts"
             },
             "command": "${workspaceFolder}/october/scripts/autobuild_full.sh"
+        },
+        {
+            "label": "mac_start",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/october/scripts"
+            },
+            "command": "${workspaceFolder}/october/scripts/mac_start.sh"
         }
     ]
 }
