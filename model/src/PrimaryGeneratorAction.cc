@@ -18,7 +18,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
   fParticleGun = new G4ParticleGun();
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0, 0, 1));
-  fParticleGun->SetParticleEnergy(10 * MeV);
+  fParticleGun->SetParticleEnergy(250 * MeV);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -36,7 +36,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   const int n = 6;
 
   fParticleGun->SetParticleDefinition(
-      G4ParticleTable::GetParticleTable()->FindParticle("gamma"));
+      G4ParticleTable::GetParticleTable()->FindParticle("proton"));
 
   G4double r = 20 * cm;
   double sini = std::sin(i/6.0 * 2 * M_PI);
