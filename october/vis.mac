@@ -24,5 +24,6 @@
 
 /vis/viewer/set/style surface
 
+/vis/viewer/set/projection p
 /vis/viewer/set/autoRefresh true
 /vis/verbose warnings
