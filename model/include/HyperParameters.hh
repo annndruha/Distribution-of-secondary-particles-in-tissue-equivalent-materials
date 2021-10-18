@@ -22,9 +22,9 @@ constexpr G4double world_size_z = 300 * CLHEP::cm;
 G4Material* target_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_W");
 
-constexpr G4double target_size_x = 10.0 * CLHEP::cm;
-constexpr G4double target_size_y = 10.0 * CLHEP::cm;
-constexpr G4double target_size_z = 10.0 * CLHEP::cm;
+constexpr G4double target_size_x = 5.0 * CLHEP::cm;
+constexpr G4double target_size_y = 5.0 * CLHEP::cm;
+constexpr G4double target_size_z = 5.0 * CLHEP::cm;
 
 
 // == == == == == == == == == == == == == == == ==

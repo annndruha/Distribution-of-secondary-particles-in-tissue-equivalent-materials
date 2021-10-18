@@ -11,9 +11,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/october/scripts"
+                "cwd": "${workspaceFolder}/model/scripts"
             },
-            "command": "${workspaceFolder}/october/scripts/autobuild.sh"
+            "command": "${workspaceFolder}/model/scripts/autobuild.sh"
         },
         {
             "label": "autobuild_full",
@@ -23,9 +23,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/october/scripts"
+                "cwd": "${workspaceFolder}/model/scripts"
             },
-            "command": "${workspaceFolder}/october/scripts/autobuild_full.sh"
+            "command": "${workspaceFolder}/model/scripts/autobuild_full.sh"
         },
         {
             "label": "mac_start",
@@ -35,9 +35,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/october/scripts"
+                "cwd": "${workspaceFolder}/model/scripts"
             },
-            "command": "${workspaceFolder}/october/scripts/mac_start.sh"
+            "command": "${workspaceFolder}/model/scripts/mac_start.sh"
         }
     ]
 }

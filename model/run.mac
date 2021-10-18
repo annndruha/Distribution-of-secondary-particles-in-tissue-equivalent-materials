@@ -2,13 +2,4 @@
 
 #/control/execute gps.mac
 
-
-/gps/pos/type Plane
-/gps/pos/shape Circle
-/gps/pos/centre 0 0 0 cm
-/gps/pos/radius 1 cm
-
-/gps/direction 0 0 1
-/gps/particle e-
-/gps/energy 10 MeV
-/run/beamOn 1000
+#/run/beamOn 1000
