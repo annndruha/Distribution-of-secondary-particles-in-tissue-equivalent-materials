@@ -36,7 +36,11 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   const int n = 6;
 
   fParticleGun->SetParticleDefinition(
-      G4ParticleTable::GetParticleTable()->FindParticle("proton"));
+      G4ParticleTable::GetParticleTable()->FindParticle("neutron")); 
+      // электроны до 20 мэв
+      // фотоны до 20
+      // протоны 10-100 Мэв
+      // Нейтронами не облучают, излучение от кобальта
 
   G4double r = 20 * cm;
   double sini = std::sin(i/6.0 * 2 * M_PI);
