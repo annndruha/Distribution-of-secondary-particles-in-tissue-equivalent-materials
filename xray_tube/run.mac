@@ -1,0 +1,5 @@
+/run/initialize
+
+#/control/execute gps.mac
+
+#/run/beamOn 1000

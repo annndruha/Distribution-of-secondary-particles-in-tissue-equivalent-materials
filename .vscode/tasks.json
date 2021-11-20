@@ -11,9 +11,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model/scripts"
+                "cwd": "${workspaceFolder}/xray_tube/scripts"
             },
-            "command": "${workspaceFolder}/model/scripts/autobuild.sh"
+            "command": "${workspaceFolder}/xray_tube/scripts/autobuild.sh"
         },
         {
             "label": "autobuild_full",
@@ -23,9 +23,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model/scripts"
+                "cwd": "${workspaceFolder}/xray_tube/scripts"
             },
-            "command": "${workspaceFolder}/model/scripts/autobuild_full.sh"
+            "command": "${workspaceFolder}/xray_tube/scripts/autobuild_full.sh"
         },
         {
             "label": "mac_start",
@@ -35,9 +35,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model/scripts"
+                "cwd": "${workspaceFolder}/xray_tube/scripts"
             },
-            "command": "${workspaceFolder}/model/scripts/mac_start.sh"
+            "command": "${workspaceFolder}/xray_tube/scripts/mac_start.sh"
         }
     ]
 }
