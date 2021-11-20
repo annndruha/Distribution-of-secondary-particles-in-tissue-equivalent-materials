@@ -15,7 +15,7 @@
 /vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
 /vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
 
-/vis/scene/endOfEventAction accumulate 10
+/vis/scene/endOfEventAction accumulate 100
 
 /vis/set/lineWidth 2
 /vis/set/colour        # Revert to default colour (white)

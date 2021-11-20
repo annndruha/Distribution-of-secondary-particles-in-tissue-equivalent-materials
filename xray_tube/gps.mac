@@ -1,13 +1,12 @@
 /gps/pos/type Plane
 /gps/pos/shape Circle
-/gps/pos/centre 0 0 -90 mm
 /gps/pos/radius 3 mm
+/gps/pos/centre 0 0 -9 cm
 
-/gps/position 0 0 10 cm
-/gps/direction -1 0 0
+/gps/direction 0 0 1
 
 /gps/particle e-
-/gps/energy 100 keV
+/gps/energy 300 keV
 
-/run/printProgress 10
+/run/printProgress 100
 /run/beamOn 500
