@@ -10,56 +10,20 @@
 #include "G4SystemOfUnits.hh"
 #include "Randomize.hh"
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 PrimaryGeneratorAction::PrimaryGeneratorAction()
     : G4VUserPrimaryGeneratorAction(),
-      fGPS(0) //fParticleGun(0)
+      fGPS(0)
 {
   fGPS = new G4GeneralParticleSource();
-  //fParticleGun = new G4GeneralParticleSource();
-  //fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0, 0, 1));
-  //fParticleGun->SetParticleEnergy(250 * MeV);
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
-  //delete fParticleGun;
   delete fGPS;
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
-  /*static int i = 0;
-  const int n = 6;
-
-  fParticleGun->SetParticleDefinition(
-      G4ParticleTable::GetParticleTable()->FindParticle("neutron")); 
-      // электроны до 20 мэв
-      // фотоны до 20
-      // протоны 10-100 Мэв
-      // Нейтронами не облучают, излучение от кобальта
-
-  G4double r = 20 * cm;
-  double sini = std::sin(i/6.0 * 2 * M_PI);
-  double cosi = std::cos(i/6.0 * 2 * M_PI);
-
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(sini, 0, cosi));
-
-  G4double dx = (G4UniformRand() - 0.5) * cm;
-  G4double dy = (G4UniformRand() - 0.5) * cm;
-  G4double dz = (G4UniformRand() - 0.5) * cm;
-  G4double pos = 147.5 * CLHEP::cm;
-  fParticleGun->SetParticlePosition(G4ThreeVector(dx -r*sini,
-                                                  0 + dy,
-                                                  pos + dz -r*cosi));*/
-
-  //fParticleGun->GeneratePrimaryVertex(anEvent);
-  /*i = (i + 1) % n;*/
-
   fGPS->GeneratePrimaryVertex(anEvent);
 }

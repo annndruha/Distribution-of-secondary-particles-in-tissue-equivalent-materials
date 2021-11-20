@@ -15,15 +15,10 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
   public:
     PrimaryGeneratorAction();
     virtual ~PrimaryGeneratorAction();
-
-    // method from the base class
     virtual void GeneratePrimaries(G4Event*);
 
   private:
-    //G4ParticleGun*  fParticleGun;
     G4GeneralParticleSource* fGPS;
 };
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif
