@@ -26,4 +26,10 @@ constexpr G4double anode_len = 9.0*CLHEP::cm;
 G4Material* anode_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Cu");
 
+// == == == == == == == == == == == == == == == ==
+// Параметры сферы детектора
+//
+/*G4Material* target_material =
+    G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");*/
+
 #endif

@@ -22,7 +22,5 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     G4LogicalVolume*  fScoringVolume;
 };
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 #endif
 

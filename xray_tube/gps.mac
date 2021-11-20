@@ -8,5 +8,5 @@
 /gps/particle e-
 /gps/energy 300 keV
 
-/run/printProgress 1000
-/run/beamOn 10000
+/run/printProgress 100
+/run/beamOn 1000
