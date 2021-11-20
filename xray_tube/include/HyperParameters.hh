@@ -11,9 +11,10 @@
 G4Material* world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 
-constexpr G4double world_size_x = 20 * CLHEP::cm;
+/*constexpr G4double world_size_x = 20 * CLHEP::cm;
 constexpr G4double world_size_y = 20 * CLHEP::cm;
-constexpr G4double world_size_z = 20 * CLHEP::cm;
+constexpr G4double world_size_z = 20 * CLHEP::cm;*/
+constexpr G4double world_radius = 16 * CLHEP::cm;
 
 
 // == == == == == == == == == == == == == == == ==
@@ -29,7 +30,7 @@ G4Material* anode_material =
 // == == == == == == == == == == == == == == == ==
 // Параметры сферы детектора
 //
-/*G4Material* target_material =
-    G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");*/
+G4Material* target_material =
+    G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 
 #endif

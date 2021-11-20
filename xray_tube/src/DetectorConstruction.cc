@@ -33,7 +33,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
        0.5 * world_size_x, 0.5 * world_size_y, 0.5 * world_size_z);*/
   G4Sphere* solidWorld = new G4Sphere("World",
                                   0,
-                                  15*cm,
+                                  world_radius,
                                   0,
                                   2*M_PI,
                                   0,
@@ -88,16 +88,16 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 // == == == == == == == == == == == == == == == ==
 // Создание объёма детектора
 //
-/*  auto target = new G4Sphere("Target",
-                              10*cm,
-                              11*cm,
+  auto target = new G4Sphere("Target",
+                              world_radius - 0.01*cm,
+                              world_radius,
                               0,
-                              M_PI,
+                              2*M_PI,
                               0,
-                              M_PI);
+                              2*M_PI);
 
 
-  G4LogicalVolume* logic_tg = new G4LogicalVolume(target, target_material, "Anode");
+  G4LogicalVolume* logic_tg = new G4LogicalVolume(target, target_material, "Target");
   new G4PVPlacement(
     0,
     G4ThreeVector(0,
@@ -108,7 +108,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     logicWorld,
     false,
     0,
-    false);*/
+    false);
 
 
   return physWorld;

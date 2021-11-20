@@ -30,24 +30,26 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   if (volume->GetName() != "Target")
     return;
 
-  auto edep = step->GetTotalEnergyDeposit();
-  //if (edep == 0)
-  //  return;
+  if (not step->IsLastStepInVolume()){
+    return;
+  }
 
   auto track = step->GetTrack();
   auto particle = track->GetDynamicParticle();
   auto energy = particle->GetKineticEnergy();
   auto particle_name = particle->GetDefinition()->GetParticleName();
   auto pos = step->GetPreStepPoint()->GetPosition();
+  auto vel = step->GetPreStepPoint()->GetMomentum();
 
   auto analysis = G4AnalysisManager::Instance();
-  analysis->FillNtupleDColumn(0, 0, edep);
+  analysis->FillNtupleSColumn(0, 0, particle_name);
   analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::mm);
   analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::mm);
   analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::mm);
-  analysis->AddNtupleRow(0);
 
-  analysis->FillNtupleSColumn(1, 0, particle_name);
-  analysis->FillNtupleDColumn(1, 1, energy / CLHEP::MeV);
-  analysis->AddNtupleRow(1);
+  analysis->FillNtupleDColumn(0, 4, vel.getX() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 5, vel.getY() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 6, vel.getZ() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 7, energy / CLHEP::MeV);
+  analysis->AddNtupleRow(0);
 }
