@@ -35,8 +35,8 @@ int main(int argc,char** argv)
 
   // Choose the Random engine
   G4Random::setTheEngine(new CLHEP::RanecuEngine);
-  long seed = time(NULL);
-  G4cout << "Seed: " << time(NULL) << G4endl;
+  long seed = 42;
+  G4cout << "Seed: " << seed << G4endl;
   G4Random::setTheSeed(seed);
 
   // Construct the default run manager
