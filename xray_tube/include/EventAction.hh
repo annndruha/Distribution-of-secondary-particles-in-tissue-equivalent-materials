@@ -22,8 +22,6 @@ class EventAction : public G4UserEventAction
     G4double     fEdep;
 };
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 #endif
 
     

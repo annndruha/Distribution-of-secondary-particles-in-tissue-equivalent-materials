@@ -14,8 +14,6 @@
 
 #include <sstream>
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 RunAction::RunAction()
 : G4UserRunAction(),
   fEdep(0.),
@@ -39,12 +37,8 @@ RunAction::RunAction()
   analysis->FinishNtuple(1);
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 RunAction::~RunAction()
 {}
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void RunAction::BeginOfRunAction(const G4Run* run)
 {
@@ -53,8 +47,6 @@ void RunAction::BeginOfRunAction(const G4Run* run)
   ss << "Run" << run->GetRunID();
   analysis->OpenFile(ss.str());
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void RunAction::EndOfRunAction(const G4Run* run)
 {
@@ -65,13 +57,8 @@ void RunAction::EndOfRunAction(const G4Run* run)
  analysis->CloseFile();
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 void RunAction::AddEdep(G4double edep)
 {
   std::stringstream ss;
   ss << "Run end" << edep;
 }
-
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
