@@ -65,7 +65,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
 
 
-  G4LogicalVolume* logic = new G4LogicalVolume(anode, target_material, "Target");
+  G4LogicalVolume* logic = new G4LogicalVolume(anode, anode_material, "Anode");
 
 
   new G4PVPlacement(

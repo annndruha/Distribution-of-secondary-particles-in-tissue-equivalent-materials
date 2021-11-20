@@ -44,8 +44,7 @@ target_link_libraries(main ${Geant4_LIBRARIES})
 #
 set(main_SCRIPTS
   init_vis.mac
-  scorer.mac
-  run.mac
+  gps.mac
   vis.mac
   )
 

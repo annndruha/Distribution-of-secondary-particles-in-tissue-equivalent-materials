@@ -14,25 +14,27 @@
 
 PrimaryGeneratorAction::PrimaryGeneratorAction()
     : G4VUserPrimaryGeneratorAction(),
-      fParticleGun(0)
+      fGPS(0) //fParticleGun(0)
 {
-  fParticleGun = new G4ParticleGun();
-  fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0, 0, 1));
-  fParticleGun->SetParticleEnergy(250 * MeV);
+  fGPS = new G4GeneralParticleSource();
+  //fParticleGun = new G4GeneralParticleSource();
+  //fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0, 0, 1));
+  //fParticleGun->SetParticleEnergy(250 * MeV);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
-  delete fParticleGun;
+  //delete fParticleGun;
+  delete fGPS;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
-  static int i = 0;
+  /*static int i = 0;
   const int n = 6;
 
   fParticleGun->SetParticleDefinition(
@@ -54,9 +56,10 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   G4double pos = 147.5 * CLHEP::cm;
   fParticleGun->SetParticlePosition(G4ThreeVector(dx -r*sini,
                                                   0 + dy,
-                                                  pos + dz -r*cosi));
+                                                  pos + dz -r*cosi));*/
 
-  fParticleGun->GeneratePrimaryVertex(anEvent);
+  //fParticleGun->GeneratePrimaryVertex(anEvent);
+  /*i = (i + 1) % n;*/
 
-  i = (i + 1) % n;
+  fGPS->GeneratePrimaryVertex(anEvent);
 }
