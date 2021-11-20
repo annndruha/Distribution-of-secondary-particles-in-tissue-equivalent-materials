@@ -8,6 +8,7 @@
 #include "G4Box.hh"
 #include "G4Cons.hh"
 #include "G4Tubs.hh"
+#include "G4SubtractionSolid.hh"
 
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
@@ -46,15 +47,32 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                       false);                //overlaps checking
 
 
+  auto cylinder = new G4Tubs("Cylinder",
+                          0.,
+                          anode_radius,
+                          anode_len,
+                          0.,
+                          2*M_PI);
+  auto box = new G4Box("box",
+                        anode_len*sin(abs(anode_angel)),
+                        anode_len*sin(abs(anode_angel)),
+                        anode_len*2);
 
-  auto solid = new G4Box("Target", target_size_x, target_size_y, target_size_z);
-  G4LogicalVolume* logic = new G4LogicalVolume(solid, target_material, "Target");
+  auto rm = new G4RotationMatrix(0, -anode_angel, 0);
+  auto tm = new G4ThreeVector(0,0, -anode_len);
+
+  auto anode = new G4SubtractionSolid("anode", cylinder, box, rm, *tm);
+
+
+
+  G4LogicalVolume* logic = new G4LogicalVolume(anode, target_material, "Target");
+
 
   new G4PVPlacement(
     0,
-    G4ThreeVector(target_position_x,
-                  target_position_y,
-                  target_position_z),
+    G4ThreeVector(0,
+                  0,
+                  0),
     logic,
     "Target",
     logicWorld,

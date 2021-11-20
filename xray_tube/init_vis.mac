@@ -21,7 +21,7 @@
 /vis/set/colour        # Revert to default colour (white)
 /vis/set/lineWidth  # Revert to default line width (1.)
 
-#/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
+/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
 
 /vis/geometry/set/visibility World 0 false
 
