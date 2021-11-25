@@ -38,6 +38,11 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   auto particle = track->GetDynamicParticle();
   auto energy = particle->GetKineticEnergy();
   auto particle_name = particle->GetDefinition()->GetParticleName();
+
+  if (particle_name != "gamma"){
+    return;
+  }
+
   auto pos = step->GetPreStepPoint()->GetPosition();
   auto vel = step->GetPreStepPoint()->GetMomentum();
 
