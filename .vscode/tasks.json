@@ -1,6 +1,4 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
@@ -28,7 +26,7 @@
             "command": "${workspaceFolder}/xray_tube/scripts/autobuild_full.sh"
         },
         {
-            "label": "mac_start",
+            "label": "start_GUI",
             "type": "shell",
             "group": {
                 "kind": "build",
@@ -37,7 +35,19 @@
             "options": {
                 "cwd": "${workspaceFolder}/xray_tube/scripts"
             },
-            "command": "${workspaceFolder}/xray_tube/scripts/mac_start.sh"
+            "command": "${workspaceFolder}/xray_tube/scripts/start_gui.sh"
+        },
+        {
+            "label": "start_mac",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/xray_tube/scripts"
+            },
+            "command": "${workspaceFolder}/xray_tube/scripts/start_mac.sh"
         }
     ]
 }

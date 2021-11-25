@@ -1,14 +1,19 @@
 #!/bin/sh
 
-# Чтобы запустить скрипт сделайте из этого текста файл с расширением .sh
-# Поместите в папку для установки и запустите из терминала командой: sudo sh ./install-geant.sh
-
-NAME_VERSION=geant4.10.07.p02
-# Перед изменением версии проверьте что она доступна по адресу ниже:
-# http://cern.ch/geant4-data/releases/ВАША_ВЕРСИЯ.tar.gz
-
-# Актуальная версия скрипта
+# Актуальная версия скрипта:
 # http://hea.phys.msu.ru/static/data/install-geant.sh
+
+# Чтобы запустить скрипт сделайте из этого текста файл с расширением .sh
+# Поместите в папку для установки (рекомендуется ~/g4insall)
+# и запустите из терминала командой: sudo sh ./install-geant.sh
+
+# =====================================================================
+# Geant4 10.7-patch-03 update 19 November 2021
+NAME_VERSION=geant4.10.07.p03
+SHARE_NAME=Geant4-10.7.3
+# При изменением версии проверьте что новая верся доступна по ссылке:
+# http://cern.ch/geant4-data/releases/ВАША_ВЕРСИЯ.tar.gz
+# =====================================================================
 
 # Определение числа потоков
 export N_THREADS=`lscpu | grep "CPU(s)" -m1 | cut -d: -f2 | tr ' ' '\0'`
@@ -48,4 +53,4 @@ make -j$N_THREADS
 sudo make install
 
 # Конфигурирование .bashrc
-echo "source $HOME/g4install/share/Geant4-10.7.1/geant4make/geant4make.sh" >> ~/.bashrc
+echo "source $HOME/g4install/share/${SHARE_NAME}/geant4make/geant4make.sh" >> ~/.bashrc
