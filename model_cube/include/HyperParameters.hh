@@ -8,31 +8,17 @@
 // == == == == == == == == == == == == == == == == == == == == == == ==
 // Конфигурация мира.
 //
+constexpr G4double world_len = 20 * CLHEP::cm;
 G4Material* world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 
-/*constexpr G4double world_size_x = 20 * CLHEP::cm;
-constexpr G4double world_size_y = 20 * CLHEP::cm;
-constexpr G4double world_size_z = 20 * CLHEP::cm;*/
-constexpr G4double world_len = 20 * CLHEP::cm;
-
 
 // == == == == == == == == == == == == == == == ==
-// Параметры анода
+// Параметры облучаемого объекта
 //
-/* constexpr G4double anode_radius = 3.0*CLHEP::cm;
-constexpr G4double anode_angel = M_PI_4;
-constexpr G4double anode_len = 9.0*CLHEP::cm; */
 constexpr G4double box_len = 10*CLHEP::cm;
-
-
 G4Material* box_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
 
-// == == == == == == == == == == == == == == == ==
-// Параметры сферы детектора
-//
-/* G4Material* target_material =
-    G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic"); */
 
 #endif
