@@ -7,7 +7,7 @@ ExN04Field::ExN04Field()
 {
   fBz = 1.0*tesla;
   frmax_sq = sqr(1000.*cm);
-  fzmax = 1000.*cm;
+  fzmax = 20.*cm;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

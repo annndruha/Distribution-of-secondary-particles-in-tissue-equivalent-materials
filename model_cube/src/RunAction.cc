@@ -24,8 +24,8 @@ RunAction::RunAction()
   analysis->SetFirstNtupleColumnId(0);
 
   analysis->CreateNtuple("ParticleData", "Position");
-  //analysis->CreateNtupleDColumn(0, "eDep");
   analysis->CreateNtupleSColumn(0, "particle_name");
+  analysis->CreateNtupleIColumn(0, "parentID");
   analysis->CreateNtupleDColumn(0, "X");
   analysis->CreateNtupleDColumn(0, "Y");
   analysis->CreateNtupleDColumn(0, "Z");

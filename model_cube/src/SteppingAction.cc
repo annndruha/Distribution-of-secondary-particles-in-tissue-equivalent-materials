@@ -27,10 +27,10 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
 
   // check if we are in scoring volume
   // G4cout << volume->GetName() << G4endl;
-  if (volume->GetName() != "Target")
+  if (volume->GetName() != "Box")
     return;
 
-  if (not step->IsLastStepInVolume()){
+  if (not step->IsFirstStepInVolume()){
     return;
   }
 
@@ -38,23 +38,26 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   auto particle = track->GetDynamicParticle();
   auto energy = particle->GetKineticEnergy();
   auto particle_name = particle->GetDefinition()->GetParticleName();
+  /* particle-> */
 
-  if (particle_name != "gamma"){
+/*   if (particle_name != "gamma"){
     return;
-  }
+  } */
 
   auto pos = step->GetPreStepPoint()->GetPosition();
   auto vel = step->GetPreStepPoint()->GetMomentum();
 
   auto analysis = G4AnalysisManager::Instance();
   analysis->FillNtupleSColumn(0, 0, particle_name);
-  analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::mm);
+  
+  analysis->FillNtupleIColumn(0, 1, track->GetParentID());
+  analysis->FillNtupleDColumn(0, 2, pos.getX() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 3, pos.getY() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 4, pos.getZ() / CLHEP::mm);
 
-  analysis->FillNtupleDColumn(0, 4, vel.getX() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 5, vel.getY() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 6, vel.getZ() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 7, energy / CLHEP::MeV);
+  analysis->FillNtupleDColumn(0, 5, vel.getX() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 6, vel.getY() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 7, vel.getZ() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 8, energy / CLHEP::MeV);
   analysis->AddNtupleRow(0);
 }
