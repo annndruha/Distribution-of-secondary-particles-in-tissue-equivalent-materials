@@ -1,2 +1,1 @@
-/vis/geometry/set/colour Anode 0.8 0.5 0.2 0.5 0.2
-/vis/geometry/set/colour Target 0.5 0.5 0.8 0.1 0.1
+/vis/geometry/set/colour Box 0.0 0.0 1.0 0.5 0.2
