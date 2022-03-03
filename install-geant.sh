@@ -4,16 +4,13 @@
 # http://hea.phys.msu.ru/static/data/install-geant.sh
 
 # Чтобы запустить скрипт сделайте из этого текста файл с расширением .sh
-# Поместите в папку для установки (рекомендуется ~/g4install)
-# и запустите из терминала командой: sudo sh ./install-geant.sh
-
-# =====================================================================
-
+# и запустите из терминала командой: sh ./install-geant.sh
 NAME_VERSION=geant4-v11.0.0
 SHARE_NAME=Geant4-11.0.0
 # Geant4-11.0.0 first released 10 December 2021
 # При изменением версии проверьте что новая версия доступна по ссылке:
 # http://cern.ch/geant4-data/releases/ВАША_ВЕРСИЯ.tar.gz
+# =====================================================================
 
 # Установка зависимостей
 echo ====================================================================
@@ -28,12 +25,15 @@ sudo apt install \
     mesa-utils
 echo ====================================================================
 echo ===Load Geant4 from cern.ch...======================================
+mkdir $HOME/g4install
+cd $HOME/g4install
 # Загрузка исходников
 if [ -f "${NAME_VERSION}.tar.gz" ]; then
     echo "File ${NAME_VERSION}.tar.gz already exists."
 else 
     wget http://cern.ch/geant4-data/releases/${NAME_VERSION}.tar.gz
     sudo tar xzf ${NAME_VERSION}.tar.gz
+    sudo chmod -R 777 ${NAME_VERSION}/
 fi
 # Подготовка директории для сборки (build)
 mkdir build
@@ -53,10 +53,20 @@ cmake ../${NAME_VERSION} \
 echo ====================================================================
 # Определение числа потоков
 export N_THREADS=`lscpu | grep "CPU(s)" -m1 | cut -d: -f2 | tr ' ' '\0'`
-# Запуск make & make install
-make -j$N_THREADS
-mkdir $HOME/g4folder
-export DESTDIR="$HOME/g4folder" && make -j4 install
+# Запуск make install
+make DESTDIR="" -j$N_THREADS install
 
-# Конфигурирование .bashrc
-echo "source $HOME/g4install/share/${SHARE_NAME}/geant4make/geant4make.sh" >> ~/.bashrc
+
+echo ====================================================================
+if [ -d "$HOME/g4install/share/${SHARE_NAME}" ]; then
+    echo "Install corectly"
+    # Конфигурирование .bashrc
+    echo "source $HOME/g4install/share/${SHARE_NAME}/geant4make/geant4make.sh" >> ~/.bashrc
+    # Очистка временных файлов
+    rm $HOME/g4install/${NAME_VERSION}.tar.gz
+    rm -r $HOME/g4install/${NAME_VERSION}
+    rm -r $HOME/g4install/build
+else 
+    echo "Install with errors"
+fi
+
