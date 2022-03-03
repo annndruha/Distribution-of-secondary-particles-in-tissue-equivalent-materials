@@ -9,7 +9,7 @@ NAME_VERSION=geant4-v11.0.0
 SHARE_NAME=Geant4-11.0.0
 # Geant4-11.0.0 first released 10 December 2021
 # При изменением версии проверьте что новая версия доступна по ссылке:
-# http://cern.ch/geant4-data/releases/ВАША_ВЕРСИЯ.tar.gz
+# http://cern.ch/geant4-data/releases/NAME_VERSION.tar.gz
 # =====================================================================
 
 # Установка зависимостей
@@ -56,17 +56,16 @@ export N_THREADS=`lscpu | grep "CPU(s)" -m1 | cut -d: -f2 | tr ' ' '\0'`
 # Запуск make install
 make DESTDIR="" -j$N_THREADS install
 
-
 echo ====================================================================
 if [ -d "$HOME/g4install/share/${SHARE_NAME}" ]; then
-    echo "Install corectly"
+    echo ===Install corectly=================================================
     # Конфигурирование .bashrc
     echo "source $HOME/g4install/share/${SHARE_NAME}/geant4make/geant4make.sh" >> ~/.bashrc
     # Очистка временных файлов
-    rm $HOME/g4install/${NAME_VERSION}.tar.gz
-    rm -r $HOME/g4install/${NAME_VERSION}
-    rm -r $HOME/g4install/build
+    # rm -f $HOME/g4install/${NAME_VERSION}.tar.gz
+    # rm -r -f $HOME/g4install/${NAME_VERSION}
+    # rm -r -f $HOME/g4install/build
 else 
-    echo "Install with errors"
+    echo ===Install with errors==============================================
 fi
-
+echo ====================================================================
