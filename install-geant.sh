@@ -4,14 +4,14 @@
 # http://hea.phys.msu.ru/static/data/install-geant.sh
 
 # Чтобы запустить скрипт сделайте из этого текста файл с расширением .sh
-# Поместите в папку для установки (рекомендуется ~/g4insatll)
+# Поместите в папку для установки (рекомендуется ~/g4install)
 # и запустите из терминала командой: sudo sh ./install-geant.sh
 
 # =====================================================================
-# Geant4 10.7-patch-03 update 19 November 2021
-NAME_VERSION=geant4.10.07.p03
-SHARE_NAME=Geant4-10.7.3
-# При изменением версии проверьте что новая верся доступна по ссылке:
+NAME_VERSION=geant4-v11.0.0
+SHARE_NAME=Geant4-11.0.0
+# Geant4-11.0.0 first released 10 December 2021
+# При изменением версии проверьте что новая версия доступна по ссылке:
 # http://cern.ch/geant4-data/releases/ВАША_ВЕРСИЯ.tar.gz
 # =====================================================================
 
@@ -31,13 +31,12 @@ sudo apt install \
 wget http://cern.ch/geant4-data/releases/${NAME_VERSION}.tar.gz
 
 # Распаковка исходников
-# Подготовка директории для сборки (build)
 tar xzf ${NAME_VERSION}.tar.gz
+# Подготовка директории для сборки (build)
 mkdir build
 cd build
 
 # Запуск cmake
-# TODO: Добавить гибкое конфигурирование
 cmake ../${NAME_VERSION} \
     -DCMAKE_INSTALL_PREFIX=$HOME/g4install \
     -DGEANT4_BUILD_MULTITHREADED=ON \
