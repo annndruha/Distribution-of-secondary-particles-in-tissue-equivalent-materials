@@ -61,10 +61,11 @@ if [ -d "$HOME/g4install/share/${SHARE_NAME}" ]; then
     echo ===Install corectly=================================================
     # Конфигурирование .bashrc
     echo "source $HOME/g4install/share/${SHARE_NAME}/geant4make/geant4make.sh" >> ~/.bashrc
+    echo ===Remove temp files================================================
     # Очистка временных файлов
-    # rm -f $HOME/g4install/${NAME_VERSION}.tar.gz
-    # rm -r -f $HOME/g4install/${NAME_VERSION}
-    # rm -r -f $HOME/g4install/build
+    rm -f $HOME/g4install/${NAME_VERSION}.tar.gz
+    rm -r -f $HOME/g4install/${NAME_VERSION}
+    rm -r -f $HOME/g4install/build
 else 
     echo ===Install with errors==============================================
 fi
