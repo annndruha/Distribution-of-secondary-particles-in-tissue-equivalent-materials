@@ -10,7 +10,8 @@
 #include "G4UnitsTable.hh"
 #include "G4SystemOfUnits.hh"
 
-#include "g4csv.hh"
+#include "G4AnalysisManager.hh"
+#include "g4csv_defs.hh"
 
 #include <sstream>
 
@@ -20,6 +21,7 @@ RunAction::RunAction()
   fEdep2(0.)
 {
   auto analysis = G4AnalysisManager::Instance();
+  analysis->SetDefaultFileType("csv");
   analysis->SetFirstNtupleId(0);
   analysis->SetFirstNtupleColumnId(0);
 
@@ -51,7 +53,7 @@ void RunAction::BeginOfRunAction(const G4Run* run)
   std::stringstream ss;
   ss << "Run" << run->GetRunID();
   analysis->OpenFile(ss.str());
-}
+} 
 
 void RunAction::EndOfRunAction(const G4Run* run)
 {

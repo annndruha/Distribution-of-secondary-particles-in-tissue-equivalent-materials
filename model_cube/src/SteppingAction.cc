@@ -7,7 +7,8 @@
 #include "G4RunManager.hh"
 #include "G4LogicalVolume.hh"
 
-#include "g4csv.hh"
+#include "G4AnalysisManager.hh"
+#include "g4csv_defs.hh"
 
 SteppingAction::SteppingAction(EventAction *eventAction)
     : G4UserSteppingAction(),
