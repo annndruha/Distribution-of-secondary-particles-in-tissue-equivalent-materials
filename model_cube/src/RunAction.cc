@@ -27,14 +27,16 @@ RunAction::RunAction()
 
   analysis->CreateNtuple("ParticleData", "Position");
   analysis->CreateNtupleSColumn(0, "particle_name");
+  analysis->CreateNtupleSColumn(0, "creator_process");
   analysis->CreateNtupleIColumn(0, "parentID");
-  analysis->CreateNtupleDColumn(0, "X");
+  analysis->CreateNtupleDColumn(0, "energy");
+
+/*   analysis->CreateNtupleDColumn(0, "X");
   analysis->CreateNtupleDColumn(0, "Y");
   analysis->CreateNtupleDColumn(0, "Z");
   analysis->CreateNtupleDColumn(0, "vX");
   analysis->CreateNtupleDColumn(0, "vY");
-  analysis->CreateNtupleDColumn(0, "vZ");
-  analysis->CreateNtupleDColumn(0, "energy");
+  analysis->CreateNtupleDColumn(0, "vZ"); */
   analysis->FinishNtuple(0);
 
 

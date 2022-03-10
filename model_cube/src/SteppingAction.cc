@@ -48,17 +48,20 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   auto pos = step->GetPreStepPoint()->GetPosition();
   auto vel = step->GetPreStepPoint()->GetMomentum();
 
-  auto analysis = G4AnalysisManager::Instance();
-  analysis->FillNtupleSColumn(0, 0, particle_name);
-  
-  analysis->FillNtupleIColumn(0, 1, track->GetParentID());
-  analysis->FillNtupleDColumn(0, 2, pos.getX() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 3, pos.getY() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 4, pos.getZ() / CLHEP::mm);
+  if (track->GetCreatorProcess() == NULL){
+    return;
+  }
 
-  analysis->FillNtupleDColumn(0, 5, vel.getX() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 6, vel.getY() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 7, vel.getZ() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 8, energy / CLHEP::MeV);
+  auto analysis = G4AnalysisManager::Instance();
+  analysis->FillNtupleSColumn(0, 0, particle_name);  
+  analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
+  analysis->FillNtupleIColumn(0, 2, track->GetParentID());
+  analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
+/*   analysis->FillNtupleDColumn(0, 4, pos.getX() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 5, pos.getY() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 6, pos.getZ() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 7, vel.getX() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 8, vel.getY() / CLHEP::mm);
+  analysis->FillNtupleDColumn(0, 9, vel.getZ() / CLHEP::mm); */
   analysis->AddNtupleRow(0);
 }
