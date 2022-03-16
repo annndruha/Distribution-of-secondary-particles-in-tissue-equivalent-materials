@@ -48,13 +48,17 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   auto pos = step->GetPreStepPoint()->GetPosition();
   auto vel = step->GetPreStepPoint()->GetMomentum();
 
-  if (track->GetCreatorProcess() == NULL){
-    return;
-  }
+
 
   auto analysis = G4AnalysisManager::Instance();
-  analysis->FillNtupleSColumn(0, 0, particle_name);  
-  analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
+  analysis->FillNtupleSColumn(0, 0, particle_name);
+
+  if (track->GetCreatorProcess() == NULL){
+    analysis->FillNtupleSColumn(0, 1, "user");
+  }
+  else {
+    analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
+  }
   analysis->FillNtupleIColumn(0, 2, track->GetParentID());
   analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
 /*   analysis->FillNtupleDColumn(0, 4, pos.getX() / CLHEP::mm);
