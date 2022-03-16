@@ -39,11 +39,6 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   auto particle = track->GetDynamicParticle();
   auto energy = particle->GetKineticEnergy();
   auto particle_name = particle->GetDefinition()->GetParticleName();
-  /* particle-> */
-
-/*   if (particle_name != "gamma"){
-    return;
-  } */
 
   auto pos = step->GetPreStepPoint()->GetPosition();
   auto vel = step->GetPreStepPoint()->GetMomentum();
@@ -61,6 +56,9 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   }
   analysis->FillNtupleIColumn(0, 2, track->GetParentID());
   analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
+
+  // analysis->FillNtupleDColumn(0, 4, step->GetTotalEnergyDeposit());
+
 /*   analysis->FillNtupleDColumn(0, 4, pos.getX() / CLHEP::mm);
   analysis->FillNtupleDColumn(0, 5, pos.getY() / CLHEP::mm);
   analysis->FillNtupleDColumn(0, 6, pos.getZ() / CLHEP::mm);
