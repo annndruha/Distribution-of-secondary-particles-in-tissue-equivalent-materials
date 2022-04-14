@@ -9,9 +9,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model_cube/scripts"
+                "cwd": "${workspaceFolder}/t1/scripts"
             },
-            "command": "${workspaceFolder}/model_cube/scripts/autobuild.sh"
+            "command": "${workspaceFolder}/t1/scripts/autobuild.sh"
         },
         {
             "label": "autobuild_full",
@@ -21,9 +21,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model_cube/scripts"
+                "cwd": "${workspaceFolder}/t1/scripts"
             },
-            "command": "${workspaceFolder}/model_cube/scripts/autobuild_full.sh"
+            "command": "${workspaceFolder}/t1/scripts/autobuild_full.sh"
         },
         {
             "label": "start_GUI",
@@ -33,9 +33,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model_cube/scripts"
+                "cwd": "${workspaceFolder}/t1/scripts"
             },
-            "command": "${workspaceFolder}/model_cube/scripts/start_gui.sh"
+            "command": "${workspaceFolder}/t1/scripts/start_gui.sh"
         },
         {
             "label": "start_mac",
@@ -45,9 +45,9 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/model_cube/scripts"
+                "cwd": "${workspaceFolder}/t1/scripts"
             },
-            "command": "${workspaceFolder}/model_cube/scripts/start_mac.sh"
+            "command": "${workspaceFolder}/t1/scripts/start_mac.sh"
         }
     ]
 }
