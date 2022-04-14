@@ -55,6 +55,7 @@ echo "==* G4 ${NAME_VERSION} installation starting... ====================="
 echo "==* Installing required packages...             ====================="
 echo "==*                                                               *=="
 
+# TODO загрузить репозитории на hea.phys.msu.ru как на зеркало
 sudo apt update
 sudo apt install                                            \
     libglm-dev                                               \
