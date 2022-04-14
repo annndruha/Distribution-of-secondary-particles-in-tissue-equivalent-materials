@@ -8,7 +8,7 @@
 /gps/direction 0 0 1
 
 /gps/particle gamma
-/gps/energy 15 MeV
+/gps/energy 20 MeV
 
 /run/printProgress 10000
 /run/beamOn 100
