@@ -1,8 +1,8 @@
 #!/bin/sh
 # ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==*
 ## \~russian @brief Сценарий автоматической установки Geant4 для Ubuntu-like систем
-## \~russian @date 14 марта 2022
-## \~russian @version 0.3
+## \~russian @date 14 апреля 2022
+## \~russian @version 0.4
 ## \~russian @authors Сергей Золотов   aka @ignobillium ignobillium@yandex.ru
 ## \~russian @authors Андрей Маракулин aka @annndruha   a.p.marakulin@gmail.com
 ## 
@@ -21,7 +21,7 @@ echo "===================================================================="
 echo "==* Checking script version                                         "
 echo "==*                                                              *=="
 
-export VERSION=0.3 # Текущая версия скрипта
+export VERSION=0.4 # Текущая версия скрипта
 
 # TODO обработка ошибки если не удалось загрузить данные из интернета
 # Сравниваем её с актуальной, по необходимости загружаем новую обновляем
@@ -61,9 +61,8 @@ sudo apt install                                            \
     cmake cmake-curses-gui                                    \
     mesa-utils mesa-common-dev                                 \
     build-essential binutils-gold gcc g++                       \
-    freeglut3-dev libglew-dev libglew1.5-dev libqt5opengl5-dev   \
-    qt5-default qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools \
-    \
+    freeglut3-dev libglew-dev libqt5opengl5-dev   \
+    qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools             \
     > log.txt
 
 # TODO загрузить исходники на hea.phys.msu.ru как на зеркало
