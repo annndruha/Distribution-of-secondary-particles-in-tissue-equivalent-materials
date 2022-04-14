@@ -1,72 +1,135 @@
 #!/bin/sh
+# ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==*
+## \~russian @brief Сценарий автоматической установки Geant4 для Ubuntu-like систем
+## \~russian @date 14 марта 2022
+## \~russian @version 0.3
+## \~russian @authors Сергей Золотов   aka @ignobillium ignobillium@yandex.ru
+## \~russian @authors Андрей Маракулин aka @annndruha   a.p.marakulin@gmail.com
+## 
+## \~russian @example Чтобы установить Geant4, пропишите в терминале: sh ./install-geant.sh
+## В начале исполнения скрипт попросит ввести пароль для установки недостающих зависимостей.
+## Если вы просматриваете код скрипта из браузера, скопируйте содержимое
+## в файл с расширением .sh и запустите: sh имя_вашего_файла.sh
+# ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==*
 
-# Актуальная версия скрипта:
+# Актуальную версию скрипта можно найти по адресу:
 # http://hea.phys.msu.ru/static/data/install-geant.sh
 
-# Чтобы запустить скрипт сделайте из этого текста файл с расширением .sh
-# и запустите из терминала командой: sh ./install-geant.sh
+# ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==*
+
+echo "===================================================================="
+echo "==* Checking script version                                         "
+echo "==*                                                              *=="
+
+export VERSION=0.3 # Текущая версия скрипта
+
+# TODO обработка ошибки если не удалось загрузить данные из интернета
+# Сравниваем её с актуальной, по необходимости загружаем новую обновляем
+export API_REQUEST=http://hea.phys.msu.ru/api/script_version
+export ACTUAL_VERSION=$(curl -f "$API_REQUEST")
+
+echo "Current version: $VERSION"
+echo "Actual version:  $ACTUAL_VERSION"
+
+if [ $VERSION != $RESULT ]; then
+    echo "===================================================================="
+    echo "==* Download and execute actual script                              "
+    echo "==*                                                              *=="
+    curl http://hea.phys.msu.ru/static/data/install-geant.sh | sh
+    exit 0  
+fi
+
+# ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==* ==*
+
 NAME_VERSION=geant4-v11.0.0
 SHARE_NAME=Geant4-11.0.0
+
 # Geant4-11.0.0 first released 10 December 2021
 # При изменением версии проверьте что новая версия доступна по ссылке:
 # http://cern.ch/geant4-data/releases/NAME_VERSION.tar.gz
-# =====================================================================
 
-# Установка зависимостей
-echo ====================================================================
-echo ===Installation ${NAME_VERSION} starting...=========================
-echo ===Install required packages...=====================================
+
+# Установка (недостающих) зависимостей
+echo "====================================================================="
+echo "==* G4 ${NAME_VERSION} installation starting... ====================="
+echo "==* Installing required packages...             ====================="
+echo "==*                                                               *=="
+
 sudo apt update
-sudo apt install \
-    build-essential binutils-gold gcc g++ cmake cmake-curses-gui \
+sudo apt install                                            \
+    libglm-dev                                               \
+    cmake cmake-curses-gui                                    \
+    mesa-utils mesa-common-dev                                 \
+    build-essential binutils-gold gcc g++                       \
+    freeglut3-dev libglew-dev libglew1.5-dev libqt5opengl5-dev   \
     qt5-default qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools \
-    freeglut3-dev libqt5opengl5-dev \
-    libglew-dev mesa-common-dev libglew1.5-dev libglm-dev \
-    mesa-utils
-echo ====================================================================
-echo ===Load Geant4 from cern.ch...======================================
+    \
+    > log.txt
+
+# TODO загрузить исходники на hea.phys.msu.ru как на зеркало
+# Скачиваем исходники Geant4
+echo "===================================================================="
+echo "==* Downloading Geant4 sources from cern.ch... ====================="
+echo "==*                                                              *=="
+
 mkdir $HOME/g4install
 cd $HOME/g4install
-# Загрузка исходников
+
 if [ -f "${NAME_VERSION}.tar.gz" ]; then
-    echo "File ${NAME_VERSION}.tar.gz already exists."
+    echo "File ${NAME_VERSION}.tar.gz already exists. No need to download."
 else 
     wget http://cern.ch/geant4-data/releases/${NAME_VERSION}.tar.gz
-    sudo tar xzf ${NAME_VERSION}.tar.gz
-    sudo chmod -R 777 ${NAME_VERSION}/
+    tar xzf ${NAME_VERSION}.tar.gz
 fi
-# Подготовка директории для сборки (build)
-mkdir build
+
+# Сборка исходников
+echo "===================================================================="
+echo "==* Configuring Geant4 via CMake                                    "
+echo "==*                                                              *=="
+
+if [ ! -d "build" ]; then
+    mkdir build
+fi
 cd build
-echo ====================================================================
-# Запуск cmake
+
 cmake ../${NAME_VERSION} \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=$HOME/g4install \
-    -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_INSTALL_DATA=ON \
     -DGEANT4_INSTALL_DATADIR=$HOME/g4install/data \
+    -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_USE_QT=ON \
     -DGEANT4_USE_SYSTEM_CLHEP=OFF \
     -DGEANT4_USE_SYSTEM_EXPAT=OFF \
-    -DGEANT4_USE_SYSTEM_ZLIB=OFF
+    -DGEANT4_USE_SYSTEM_ZLIB=OFF \
+    -DGEANT4_INSTALL_EXAMPLES=OFF
 
-echo ====================================================================
+echo "===================================================================="
+echo "==* Building Geant4                                                 "
+echo "==*                                                              *=="
+
 # Определение числа потоков
 export N_THREADS=`lscpu | grep "CPU(s)" -m1 | cut -d: -f2 | tr ' ' '\0'`
-# Запуск make install
-make DESTDIR="" -j$N_THREADS install
 
-echo ====================================================================
+# Сборка
+make -j$N_THREADS install
+
+echo "===================================================================="
 if [ -d "$HOME/g4install/share/${SHARE_NAME}" ]; then
-    echo ===Install corectly=================================================
-    # Конфигурирование .bashrc
+    echo "==* Installation completed successfully ============================"
+    echo "==*                                                              *=="
+    # Пишем в .bashrc sh-срипт, задающий необходимые для работы Geant4 переменные окружения
     echo "source $HOME/g4install/share/${SHARE_NAME}/geant4make/geant4make.sh" >> ~/.bashrc
-    echo ===Remove temp files================================================
-    # Очистка временных файлов
-    rm -f $HOME/g4install/${NAME_VERSION}.tar.gz
-    rm -r -f $HOME/g4install/${NAME_VERSION}
-    rm -r -f $HOME/g4install/build
-else 
-    echo ===Install with errors==============================================
+
+    echo "===================================================================="
+    echo "==* Removing temporal files ========================================"
+    echo "==*                                                              *=="
+    rm    -f $HOME/g4install/${NAME_VERSION}.tar.gz && echo "rm -f $HOME/g4install/${NAME_VERSION}.tar.gz"
+    rm -r -f $HOME/g4install/${NAME_VERSION} && echo "rm -r -f $HOME/g4install/${NAME_VERSION}"
+    rm -r -f $HOME/g4install/build && echo "rm -r -f $HOME/g4install/build"
+else
+    # TODO добавить лог, к которому отсылать пользователя в случае возникновения ошибки 
+    echo "==* An error occurs while installation process  ===================="
+    echo "==*                                                              *=="
 fi
-echo ====================================================================
+echo "===================================================================="
