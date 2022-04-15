@@ -1,2 +1,2 @@
 cd ../build
-./exampleB1 run1.mac
+./exampleB1 run2.mac
