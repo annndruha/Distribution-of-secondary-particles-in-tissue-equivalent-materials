@@ -18,7 +18,8 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     virtual void GeneratePrimaries(G4Event*);
 
   private:
-    G4GeneralParticleSource* fGPS;
+    G4GeneralParticleSource* fGPS; // If use mac files and general particle source
+    G4ParticleGun*  fParticleGun; // If use custom gun
 };
 
 #endif
