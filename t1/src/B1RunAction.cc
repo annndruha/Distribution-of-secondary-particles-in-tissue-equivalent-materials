@@ -84,11 +84,14 @@ void B1RunAction::BeginOfRunAction(const G4Run*)
   analysis->SetFirstNtupleId(0);
   analysis->SetFirstNtupleColumnId(0);
 
-  analysis->CreateNtuple("All particles", "Depth-dose distribution");
-  analysis->CreateNtupleDColumn(0, "dE");
+  analysis->CreateNtuple("All particles", "Data");
+  analysis->CreateNtupleSColumn(0, "name");
   analysis->CreateNtupleDColumn(0,  "x");
   analysis->CreateNtupleDColumn(0,  "y");
   analysis->CreateNtupleDColumn(0,  "z");
+  analysis->CreateNtupleDColumn(0,  "vx");
+  analysis->CreateNtupleDColumn(0,  "vy");
+  analysis->CreateNtupleDColumn(0,  "vz");
   analysis->CreateNtupleDColumn(0,  "E");
   analysis->FinishNtuple(0);
 /*

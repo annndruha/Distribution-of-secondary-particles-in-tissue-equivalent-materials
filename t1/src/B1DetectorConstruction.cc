@@ -624,7 +624,7 @@ fScoringVolume = phantoml;*/
                                               water,
                                               "phantoml");
  new G4PVPlacement (0,
-                    G4ThreeVector(0,0,105.*cm),
+                    G4ThreeVector(0,0,57.*cm), // G4ThreeVector(0,0,105.*cm)
                     phantoml,
                     "phantomp",
                     logicWorld,

@@ -83,6 +83,10 @@ void B1SteppingAction::UserSteppingAction(const G4Step* step)
     = step->GetPreStepPoint()->GetTouchableHandle()
       ->GetVolume()->GetLogicalVolume();
 
+
+  if (not step->IsFirstStepInVolume()){
+    return;
+  }
   auto volname = volume->GetName();
 
   // check if we are in scoring volume
@@ -92,17 +96,19 @@ void B1SteppingAction::UserSteppingAction(const G4Step* step)
   }
 
   auto track = step->GetTrack();
-  auto particle = track->GetDynamicParticle()->GetParticleDefinition();
-  auto pname = particle->GetParticleName();
+  auto particle = track->GetDynamicParticle();
+  auto energy = particle->GetKineticEnergy();
+  auto particle_name = particle->GetDefinition()->GetParticleName();
 
   auto dE  = step->GetTotalEnergyDeposit();
   auto E = track->GetKineticEnergy();
   auto pos = step->GetPreStepPoint()->GetPosition();
+  auto vel = step->GetPreStepPoint()->GetMomentum();
 
-  if (pname != "gamma")
+/*   if (pname != "gamma")
   {
        return;
-  }
+  } */
 
 
 
@@ -118,11 +124,15 @@ void B1SteppingAction::UserSteppingAction(const G4Step* step)
 
   auto analysis = G4AnalysisManager::Instance();
 
-  analysis->FillNtupleDColumn(0, 0, dE / CLHEP:: joule);
+  /* analysis->FillNtupleDColumn(0, 0, dE / CLHEP:: joule); */
+  analysis->FillNtupleSColumn(0, 0, particle_name);
   analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::cm);
   analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::cm);
   analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::cm);
-  analysis->FillNtupleDColumn(0, 4, E / CLHEP::MeV);
+  analysis->FillNtupleDColumn(0, 4, vel.getX());
+  analysis->FillNtupleDColumn(0, 5, vel.getY());
+  analysis->FillNtupleDColumn(0, 6, vel.getZ());
+  analysis->FillNtupleDColumn(0, 7, E / CLHEP::MeV);
   analysis->AddNtupleRow(0);
 /*
   if(pname == "neutron"){
