@@ -4,7 +4,10 @@
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4ParticleGun.hh"
 #include "G4GeneralParticleSource.hh"
+
+#include <string>
 #include "globals.hh"
+#include "CSVReader.hh"
 
 class G4Event;
 class G4Box;
@@ -20,6 +23,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
   private:
     G4GeneralParticleSource* fGPS; // If use mac files and general particle source
     G4ParticleGun*  fParticleGun; // If use custom gun
+    //CSVReader* csv_reader;
 };
 
 #endif
