@@ -36,8 +36,6 @@ DetectorConstruction::DetectorConstruction()
 DetectorConstruction::~DetectorConstruction()
 { }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
   G4Box* solidWorld = new G4Box("World", world_dx, world_dy, world_dz);
@@ -46,18 +44,6 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
     new G4LogicalVolume(solidWorld,              // its solid
                         world_material,          // its material
                         "World");                // its name
-
-
-  ExN04Field* myField = new ExN04Field;
-  G4FieldManager* fieldMgr
-    = G4TransportationManager::GetTransportationManager()->
-      GetFieldManager();
-  fieldMgr-> SetDetectorField(myField);
-  fieldMgr-> CreateChordFinder(myField);
-
-  auto field = new ExN04Field;
-  auto manager = new G4FieldManager(field);
-  logicWorld -> SetFieldManager(manager, true);
 
 
   G4VPhysicalVolume* physWorld =

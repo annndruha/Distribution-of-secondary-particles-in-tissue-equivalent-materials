@@ -7,6 +7,7 @@
 # ======================================================= Objects
 
 /vis/scene/add/magneticField
+/vis/scene/add/electricField
 #/vis/scene/add/axes 0 0 0 0.2
 
 # ======================================================= Info
