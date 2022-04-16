@@ -8,7 +8,7 @@
 // == == == == == == == == == == == == == == == == == == == == == == ==
 // Конфигурация мира.
 //
-constexpr G4double world_len = 20 * CLHEP::cm;
+constexpr G4double world_len = 2 * CLHEP::m;
 G4Material* world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 
@@ -16,7 +16,7 @@ G4Material* world_material =
 // == == == == == == == == == == == == == == == ==
 // Параметры облучаемого объекта
 //
-constexpr G4double box_len = 10*CLHEP::cm;
+constexpr G4double box_len = 20*CLHEP::cm;
 G4Material* box_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
 

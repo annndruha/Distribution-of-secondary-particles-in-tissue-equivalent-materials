@@ -23,11 +23,7 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step *step)
 {
-  // get volume of the current step
   G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
-
-  // check if we are in scoring volume
-  // G4cout << volume->GetName() << G4endl;
   if (volume->GetName() != "Box")
     return;
 
@@ -46,8 +42,7 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
 
 
   auto analysis = G4AnalysisManager::Instance();
-  analysis->FillNtupleSColumn(0, 0, particle_name);
-
+/*   analysis->FillNtupleSColumn(0, 0, particle_name);
   if (track->GetCreatorProcess() == NULL){
     analysis->FillNtupleSColumn(0, 1, "user");
   }
@@ -55,15 +50,17 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
     analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
   }
   analysis->FillNtupleIColumn(0, 2, track->GetParentID());
-  analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
+  analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV); */
 
-  // analysis->FillNtupleDColumn(0, 4, step->GetTotalEnergyDeposit());
 
-/*   analysis->FillNtupleDColumn(0, 4, pos.getX() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 5, pos.getY() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 6, pos.getZ() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 7, vel.getX() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 8, vel.getY() / CLHEP::mm);
-  analysis->FillNtupleDColumn(0, 9, vel.getZ() / CLHEP::mm); */
+  analysis->FillNtupleSColumn(0, 0, particle_name);
+  analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::cm);
+  analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::cm);
+  analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::cm);
+  analysis->FillNtupleDColumn(0, 4, vel.getX());
+  analysis->FillNtupleDColumn(0, 5, vel.getY());
+  analysis->FillNtupleDColumn(0, 6, vel.getZ());
+  analysis->FillNtupleDColumn(0, 7, energy / CLHEP::MeV);
+  analysis->AddNtupleRow(0);
   analysis->AddNtupleRow(0);
 }

@@ -81,15 +81,17 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   static int i = 0;
   std::vector<std::vector<std::string>> data = csv_reader.getData();
 
+  G4double z_shift =  -60* CLHEP::cm;
+
   G4String name = data[i][0];
   G4double x = stod(data[i][1]) * CLHEP::cm;
   G4double y = stod(data[i][2]) * CLHEP::cm;
-  G4double z = stod(data[i][3]) * CLHEP::cm;
+  G4double z = -20.1* CLHEP::cm; // stod(data[i][3]) * CLHEP::cm + z_shift;
   G4double vx = stod(data[i][4]);
   G4double vy = stod(data[i][5]);
   G4double vz = stod(data[i][6]);
   G4double energy = stod(data[i][7]) * MeV;
-  
+
 
 
   fParticleGun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle(name));

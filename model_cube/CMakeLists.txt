@@ -43,6 +43,7 @@ target_link_libraries(main ${Geant4_LIBRARIES})
 # relies on these scripts being in the current working directory.
 #
 set(main_SCRIPTS
+  beamOn.mac
   init_vis.mac
   gps.mac
   vis.mac
