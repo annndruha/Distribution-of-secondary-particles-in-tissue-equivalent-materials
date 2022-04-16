@@ -3,9 +3,6 @@
 /vis/verbose warnings
 /vis/drawVolume
 
-/vis/viewer/set/viewpointVector -1 0 0
-/vis/viewer/set/lightsVector -1 0 0
-
 /vis/viewer/set/style wireframe
 /vis/viewer/set/auxiliaryEdge true
 /vis/viewer/set/lineSegmentsPerCircle 100
@@ -28,6 +25,7 @@
 /vis/viewer/set/style surface
 /vis/viewer/set/hiddenMarker true
 /vis/viewer/set/viewpointThetaPhi 120 150
+/vis/viewer/set/lightsVector -1 0 0
 
 /vis/viewer/set/autoRefresh true
 /vis/viewer/set/projection p

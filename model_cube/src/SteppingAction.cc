@@ -23,7 +23,7 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step *step)
 {
-  G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+/*   G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
   if (volume->GetName() != "Box")
     return;
 
@@ -41,7 +41,9 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
 
 
 
-  auto analysis = G4AnalysisManager::Instance();
+  auto analysis = G4AnalysisManager::Instance(); */
+
+
 /*   analysis->FillNtupleSColumn(0, 0, particle_name);
   if (track->GetCreatorProcess() == NULL){
     analysis->FillNtupleSColumn(0, 1, "user");
@@ -53,7 +55,7 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV); */
 
 
-  analysis->FillNtupleSColumn(0, 0, particle_name);
+/*   analysis->FillNtupleSColumn(0, 0, particle_name);
   analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::cm);
   analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::cm);
   analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::cm);
@@ -62,5 +64,5 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
   analysis->FillNtupleDColumn(0, 6, vel.getZ());
   analysis->FillNtupleDColumn(0, 7, energy / CLHEP::MeV);
   analysis->AddNtupleRow(0);
-  analysis->AddNtupleRow(0);
+  analysis->AddNtupleRow(0); */
 }

@@ -8,7 +8,7 @@
 // == == == == == == == == == == == == == == == == == == == == == == ==
 // Конфигурация мира.
 //
-constexpr G4double world_len = 2 * CLHEP::m;
+constexpr G4double world_len = 3 * CLHEP::m;
 G4Material* world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
 

@@ -24,6 +24,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     G4GeneralParticleSource* fGPS; // If use mac files and general particle source
     G4ParticleGun*  fParticleGun; // If use custom gun
     CSVReader csv_reader = CSVReader("../csv_particle_source/concat_res.csv", 1);
+    std::vector<std::vector<std::string>> data;
 };
 
 #endif

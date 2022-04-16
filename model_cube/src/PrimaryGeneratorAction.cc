@@ -69,6 +69,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 PrimaryGeneratorAction::PrimaryGeneratorAction(): G4VUserPrimaryGeneratorAction(), fParticleGun(0)
 {
   fParticleGun = new G4ParticleGun();
+  data = csv_reader.getData();
 }
 
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
@@ -79,27 +80,30 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
   static int i = 0;
-  std::vector<std::vector<std::string>> data = csv_reader.getData();
 
-  G4double z_shift =  -60* CLHEP::cm;
+/*   if (data[i][0] != "gamma"){
+    return;
+  } */
+  if ((stod(data[i][1]) < -5.0 )|| (stod(data[i][1]) > 5.0)){
+    return;
+  }
+  if ((stod(data[i][2]) < -5.0) || (stod(data[i][2]) > 5.0)){
+    return;
+  }
 
   G4String name = data[i][0];
   G4double x = stod(data[i][1]) * CLHEP::cm;
   G4double y = stod(data[i][2]) * CLHEP::cm;
-  G4double z = -20.1* CLHEP::cm; // stod(data[i][3]) * CLHEP::cm + z_shift;
+  G4double z = -100 * CLHEP::cm;
   G4double vx = stod(data[i][4]);
   G4double vy = stod(data[i][5]);
   G4double vz = stod(data[i][6]);
   G4double energy = stod(data[i][7]) * MeV;
-
-
-
   fParticleGun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle(name));
   fParticleGun->SetParticlePosition(G4ThreeVector(x, y, z));
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(vx, vy, vz));
   fParticleGun->SetParticleEnergy(energy);
   fParticleGun->GeneratePrimaryVertex(anEvent);
-  if (i < csv_reader.len()-1){
-    i++;
-  }
+
+  if (i < csv_reader.len()-1) {i++;}
 }
