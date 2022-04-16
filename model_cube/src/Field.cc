@@ -5,7 +5,7 @@
 ExN04Field::ExN04Field()
  : G4MagneticField()
 {
-  fBz = 1.0*tesla;
+  fBz = 0.001*tesla;
   frmax_sq = sqr(1000.*cm);
   fzmax = 20.*cm;
 }
@@ -21,8 +21,7 @@ void ExN04Field::GetFieldValue(const double Point[3],double *Bfield) const
   Bfield[0] = 0.;
   Bfield[2] = 0.;
   
-  if ( std::abs(Point[1]) < fzmax &&
-      (sqr(Point[0])+sqr(Point[2])) < frmax_sq ) {
+  if (std::abs(Point[1]) < fzmax && (sqr(Point[0])+sqr(Point[2])) < frmax_sq ) {
     Bfield[1] = fBz;
   } else {
     Bfield[1] = 0.;

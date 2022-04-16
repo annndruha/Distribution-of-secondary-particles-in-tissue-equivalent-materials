@@ -48,7 +48,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
                         "World");                // its name
 
 
-/*   ExN04Field* myField = new ExN04Field;
+  ExN04Field* myField = new ExN04Field;
   G4FieldManager* fieldMgr
     = G4TransportationManager::GetTransportationManager()->
       GetFieldManager();
@@ -57,7 +57,7 @@ G4VPhysicalVolume* DetectorConstruction::Construct()
 
   auto field = new ExN04Field;
   auto manager = new G4FieldManager(field);
-  logicWorld -> SetFieldManager(manager, true); */
+  logicWorld -> SetFieldManager(manager, true);
 
 
   G4VPhysicalVolume* physWorld =

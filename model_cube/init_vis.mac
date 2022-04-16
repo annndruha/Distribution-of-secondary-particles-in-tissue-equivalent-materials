@@ -18,8 +18,6 @@
 /vis/set/colour        # Revert to default colour (white)
 /vis/set/lineWidth  # Revert to default line width (1.)
 
-/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
-
 /vis/viewer/set/style surface
 /vis/viewer/set/hiddenMarker true
 /vis/viewer/set/viewpointThetaPhi 120 150
