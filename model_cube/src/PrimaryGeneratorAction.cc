@@ -80,17 +80,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
   static int i = 0;
-
-/*   if (data[i][0] != "gamma"){
-    return;
-  } */
-  if ((stod(data[i][1]) < -5.0 )|| (stod(data[i][1]) > 5.0)){
-    return;
-  }
-  if ((stod(data[i][2]) < -5.0) || (stod(data[i][2]) > 5.0)){
-    return;
-  }
-
+  
   G4String name = data[i][0];
   G4double x = stod(data[i][1]) * CLHEP::cm;
   G4double y = stod(data[i][2]) * CLHEP::cm;

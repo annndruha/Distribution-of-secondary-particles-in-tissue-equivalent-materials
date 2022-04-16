@@ -40,7 +40,7 @@ DetectorConstruction::~DetectorConstruction()
 
 G4VPhysicalVolume* DetectorConstruction::Construct()
 {
-  G4Box* solidWorld = new G4Box("World", world_len, world_len, world_len);
+  G4Box* solidWorld = new G4Box("World", world_dx, world_dy, world_dz);
 
   G4LogicalVolume* logicWorld =
     new G4LogicalVolume(solidWorld,              // its solid
