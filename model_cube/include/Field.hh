@@ -4,12 +4,13 @@
 #include "G4MagneticField.hh"
 #include "globals.hh"
 
-class ExN04Field : public G4MagneticField {
+class ExN04Field : public G4MagneticField
+{
 public:
   ExN04Field();
   ~ExN04Field();
 
-  virtual void GetFieldValue( const  double Point[3], double *Bfield ) const;
+  virtual void GetFieldValue(const double Point[3], double *Bfield) const;
 
 private:
   G4double fBz;

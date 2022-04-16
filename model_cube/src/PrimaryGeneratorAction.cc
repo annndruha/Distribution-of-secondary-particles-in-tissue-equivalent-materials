@@ -27,7 +27,6 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   fGPS->GeneratePrimaryVertex(anEvent);
 } */
 
-
 // ================================================ Custom gun =============================================
 
 /* PrimaryGeneratorAction::PrimaryGeneratorAction() : G4VUserPrimaryGeneratorAction(), fParticleGun(0)
@@ -54,7 +53,7 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   G4double dz = (G4UniformRand() - 0.5) * cm;
   G4double pos = 0 * CLHEP::cm;
 
-  fParticleGun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle("neutron")); 
+  fParticleGun->SetParticleDefinition(G4ParticleTable::GetParticleTable()->FindParticle("neutron"));
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(sini, 0, cosi));
   fParticleGun->SetParticlePosition(G4ThreeVector(dx -r*sini, 0 + dy, pos + dz -r*cosi));
 
@@ -63,10 +62,9 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   i = (i + 1) % n;
 } */
 
-
 // ================================================ CSV gun =============================================
 
-PrimaryGeneratorAction::PrimaryGeneratorAction(): G4VUserPrimaryGeneratorAction(), fParticleGun(0)
+PrimaryGeneratorAction::PrimaryGeneratorAction() : G4VUserPrimaryGeneratorAction(), fParticleGun(0)
 {
   fParticleGun = new G4ParticleGun();
   data = csv_reader.getData();
@@ -80,7 +78,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
   static int i = 0;
-  
+
   G4String name = data[i][0];
   G4double x = stod(data[i][1]) * CLHEP::cm;
   G4double y = stod(data[i][2]) * CLHEP::cm;
@@ -95,5 +93,8 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   fParticleGun->SetParticleEnergy(energy);
   fParticleGun->GeneratePrimaryVertex(anEvent);
 
-  if (i < csv_reader.len()-1) {i++;}
+  if (i < csv_reader.len() - 1)
+  {
+    i++;
+  }
 }

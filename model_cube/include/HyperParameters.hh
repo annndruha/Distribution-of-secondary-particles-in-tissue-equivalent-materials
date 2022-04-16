@@ -12,16 +12,14 @@ constexpr G4double world_dx = 60 * CLHEP::cm;
 constexpr G4double world_dy = 60 * CLHEP::cm;
 constexpr G4double world_dz = 3 * CLHEP::m;
 
-G4Material* world_material =
+G4Material *world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");
-
 
 // == == == == == == == == == == == == == == == ==
 // Параметры облучаемого объекта
 //
-constexpr G4double box_len = 20*CLHEP::cm;
-G4Material* box_material =
+constexpr G4double box_len = 20 * CLHEP::cm;
+G4Material *box_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
-
 
 #endif
