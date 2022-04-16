@@ -8,7 +8,7 @@
 #include <string>
 #include <algorithm>
 #include <sstream>
-
+// TODO: Exeption if file not found
 ////============= EXAMPLE OF USAGE =============
 //
 //  CSVReader reader("you_filename.csv", 12);
