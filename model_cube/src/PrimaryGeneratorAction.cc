@@ -12,7 +12,7 @@
 
 // ================================================ GPS gun ================================================
 
-/* PrimaryGeneratorAction::PrimaryGeneratorAction(): G4VUserPrimaryGeneratorAction(), fGPS(0)
+PrimaryGeneratorAction::PrimaryGeneratorAction(): G4VUserPrimaryGeneratorAction(), fGPS(0)
 {
   fGPS = new G4GeneralParticleSource();
 }
@@ -25,7 +25,7 @@ PrimaryGeneratorAction::~PrimaryGeneratorAction()
 void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
   fGPS->GeneratePrimaryVertex(anEvent);
-} */
+}
 
 // ================================================ Custom gun =============================================
 
@@ -64,18 +64,19 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 
 // ================================================ CSV gun =============================================
 
-PrimaryGeneratorAction::PrimaryGeneratorAction() : G4VUserPrimaryGeneratorAction(), fParticleGun(0)
+/* PrimaryGeneratorAction::PrimaryGeneratorAction() : G4VUserPrimaryGeneratorAction(), fParticleGun(0)
 {
   fParticleGun = new G4ParticleGun();
   data = csv_reader.getData();
 }
+ */
 
-PrimaryGeneratorAction::~PrimaryGeneratorAction()
+/* PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
   delete fParticleGun;
-}
+} */
 
-void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
+/* void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
 {
   static int i = 0;
 
@@ -97,4 +98,4 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent)
   {
     i++;
   }
-}
+} */

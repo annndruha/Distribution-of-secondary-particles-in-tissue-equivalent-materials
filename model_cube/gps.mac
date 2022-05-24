@@ -1,9 +1,11 @@
 /run/initialize
 
 /gps/pos/type Plane
-/gps/pos/shape Circle
-/gps/pos/radius 3 mm
-/gps/pos/centre 0 0 -15 cm
+/gps/pos/shape Rectangle
+/gps/pos/centre 0 0 -40 cm
+/gps/pos/halfx 25 mm
+/gps/pos/halfy 25 mm
+
 
 /gps/direction 0 0 1
 

@@ -21,10 +21,10 @@ public:
 
 private:
   G4GeneralParticleSource *fGPS; // If use mac files and general particle source
-  G4ParticleGun *fParticleGun;   // If use custom gun
+  // G4ParticleGun *fParticleGun;   // If use custom gun
 
-  CSVReader csv_reader = CSVReader("../csv_particle_source/center_electrons.csv", 1); // If use particles from csv file
-  std::vector<std::vector<std::string>> data;
+  // CSVReader csv_reader = CSVReader("../csv_particle_source/center_electrons.csv", 1); // If use particles from csv file
+  // std::vector<std::vector<std::string>> data;
 };
 
 #endif
