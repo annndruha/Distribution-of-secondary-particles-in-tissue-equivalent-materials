@@ -27,5 +27,4 @@
 /vis/viewer/set/autoRefresh true
 /vis/viewer/set/projection p
 
-
 /control/execute vis.mac

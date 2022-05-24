@@ -180,13 +180,13 @@ G4PVPlacement* ConstructXuy(
 
 G4VPhysicalVolume* B1DetectorConstruction::Construct()
 {
-  G4double world_sizeX = 1.5 * m;   // полуразмеры мира
-  G4double world_sizeY = 1.5 * m;   // полуразмеры мира
-  G4double world_sizeZ = 2. * m;   // полуразмеры мира
+  G4double world_sizeX = 0.5 * m;   // полуразмеры мира
+  G4double world_sizeY = 0.5 * m;   // полуразмеры мира
+  G4double world_sizeZ = 0.7 * m;   // полуразмеры мира
   //
-  G4double phantom_sizeX = 20 * cm; // полуразмеры фантома
-  G4double phantom_sizeY = 20 * cm; // полуразмеры фантома
-  G4double phantom_sizeZ = 20 * cm; // полуразмеры фантома
+  G4double phantom_sizeX = 2.5 * cm; // полуразмеры фантома
+  G4double phantom_sizeY = 2.5 * cm; // полуразмеры фантома
+  G4double phantom_sizeZ = 2.5 * cm; // полуразмеры фантома
 
   G4NistManager* nist = G4NistManager::Instance();
   //
@@ -616,15 +616,15 @@ new G4PVPlacement (0, G4ThreeVector(0,0,(1000+5)*mm), phantoml, "phantomp", logi
 fScoringVolume = phantoml;*/
 
  G4Box* phantom = new G4Box ("Phantom",
-                            20.*cm,
-                            20.*cm,
-                            15.*cm);
+                            2.5*cm,
+                            2.5*cm,
+                            2.5*cm);
 
  G4LogicalVolume* phantoml = new G4LogicalVolume (phantom,
                                               water,
                                               "phantoml");
  new G4PVPlacement (0,
-                    G4ThreeVector(0,0,57.*cm), // G4ThreeVector(0,0,105.*cm)
+                    G4ThreeVector(0,0,50.*cm), // G4ThreeVector(0,0,105.*cm)
                     phantoml,
                     "phantomp",
                     logicWorld,
