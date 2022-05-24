@@ -9,8 +9,12 @@
 
 /gps/direction 0 0 1
 
-/gps/particle gamma
+/gps/particle e-
 /gps/energy 20 MeV
 
-/run/printProgress 10000
-/run/beamOn 100
+#/gps/ene/type Arb
+#/gps/hist/file ./linac_gamma_hist.dat
+#/gps/hist/inter Lin
+
+/run/printProgress 1000
+/run/beamOn 100000

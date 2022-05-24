@@ -10,7 +10,7 @@
 //
 constexpr G4double world_dx = 21 * CLHEP::cm;
 constexpr G4double world_dy = 21 * CLHEP::cm;
-constexpr G4double world_dz = 1 * CLHEP::m;
+constexpr G4double world_dz = 0.4 * CLHEP::m;
 
 G4Material *world_material =
     G4NistManager::Instance()->FindOrBuildMaterial("G4_Galactic");

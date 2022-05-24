@@ -20,13 +20,13 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step *step)
 {
-  /*   G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
+    G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
     if (volume->GetName() != "Box")
       return;
 
-    if (not step->IsFirstStepInVolume()){
+/*     if (not step->IsFirstStepInVolume()){
       return;
-    }
+    } */
 
     auto track = step->GetTrack();
     auto particle = track->GetDynamicParticle();
@@ -34,13 +34,13 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
     auto particle_name = particle->GetDefinition()->GetParticleName();
 
     auto pos = step->GetPreStepPoint()->GetPosition();
-    auto vel = step->GetPreStepPoint()->GetMomentum();
+    auto vel = step->GetPreStepPoint()->GetMomentumDirection();
 
 
 
-    auto analysis = G4AnalysisManager::Instance(); */
+    auto analysis = G4AnalysisManager::Instance();
 
-  /*   analysis->FillNtupleSColumn(0, 0, particle_name);
+    analysis->FillNtupleSColumn(0, 0, particle_name);
     if (track->GetCreatorProcess() == NULL){
       analysis->FillNtupleSColumn(0, 1, "user");
     }
@@ -48,7 +48,8 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
       analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
     }
     analysis->FillNtupleIColumn(0, 2, track->GetParentID());
-    analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV); */
+    analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
+    analysis->AddNtupleRow(0);
 
   /*   analysis->FillNtupleSColumn(0, 0, particle_name);
     analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::cm);
@@ -58,6 +59,5 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
     analysis->FillNtupleDColumn(0, 5, vel.getY());
     analysis->FillNtupleDColumn(0, 6, vel.getZ());
     analysis->FillNtupleDColumn(0, 7, energy / CLHEP::MeV);
-    analysis->AddNtupleRow(0);
     analysis->AddNtupleRow(0); */
 }
