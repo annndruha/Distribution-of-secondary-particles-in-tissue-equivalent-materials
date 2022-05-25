@@ -56,6 +56,10 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                         false,           // no boolean operation
                         0,               // copy number
                         false);          // overlaps checking
+  // == == == == == == == == == == == == == == == ==
+  // Создание маски
+  //
+
 
   // == == == == == == == == == == == == == == == ==
   // Создание водяного куба
