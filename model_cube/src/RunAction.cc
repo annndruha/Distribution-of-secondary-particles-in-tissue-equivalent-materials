@@ -27,6 +27,8 @@ RunAction::RunAction() : G4UserRunAction(), fEdep(0.), fEdep2(0.)
     analysis->CreateNtupleSColumn(0, "creator_process");
     analysis->CreateNtupleIColumn(0, "parentID");
     analysis->CreateNtupleDColumn(0, "energy");
+    analysis->CreateNtupleDColumn(0, "z");
+    analysis->CreateNtupleDColumn(0, "dE");
     analysis->FinishNtuple(0);
 
 /*   analysis->CreateNtuple("All particles", "Data");
