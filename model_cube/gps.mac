@@ -1,20 +1,31 @@
 /run/initialize
 
+#/gps/energy 20 MeV
+
+/gps/source/add 1.
 /gps/pos/type Plane
 /gps/pos/shape Rectangle
 /gps/pos/centre 0 0 -40 cm
 /gps/pos/halfx 25 mm
 /gps/pos/halfy 25 mm
-
-
 /gps/direction 0 0 1
-
 /gps/particle e-
-/gps/energy 20 MeV
+/gps/ene/type Arb
+/gps/hist/file ./linac_e_hist.dat
+/gps/hist/inter Lin
 
-#/gps/ene/type Arb
-#/gps/hist/file ./linac_gamma_hist.dat
-#/gps/hist/inter Lin
+/gps/source/add 1.
+/gps/pos/type Plane
+/gps/pos/shape Rectangle
+/gps/pos/centre 0 0 -40 cm
+/gps/pos/halfx 25 mm
+/gps/pos/halfy 25 mm
+/gps/direction 0 0 1
+/gps/particle gamma
+/gps/ene/type Arb
+/gps/hist/file ./linac_gamma_hist.dat
+/gps/hist/inter Lin
+
 
 /run/printProgress 1000
-/run/beamOn 100000
+/run/beamOn 100

@@ -42,14 +42,16 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
 
     analysis->FillNtupleSColumn(0, 0, particle_name);
     if (track->GetCreatorProcess() == NULL){
-      analysis->FillNtupleSColumn(0, 1, "user");
+      return;
+      // analysis->FillNtupleSColumn(0, 1, "user");
     }
     else {
       analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
+      analysis->FillNtupleIColumn(0, 2, track->GetParentID());
+      analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
+      analysis->AddNtupleRow(0);
     }
-    analysis->FillNtupleIColumn(0, 2, track->GetParentID());
-    analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
-    analysis->AddNtupleRow(0);
+
 
   /*   analysis->FillNtupleSColumn(0, 0, particle_name);
     analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::cm);
