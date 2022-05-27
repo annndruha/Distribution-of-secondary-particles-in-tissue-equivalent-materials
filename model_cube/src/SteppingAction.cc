@@ -26,23 +26,26 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
 
 
     auto track = step->GetTrack();
-    if (track->GetCreatorProcess() == NULL)
-      return;
-      //analysis->FillNtupleSColumn(0, 1, "user");
-
-
     auto particle = track->GetDynamicParticle();
     auto energy = particle->GetKineticEnergy();
-    auto dE  = step->GetTotalEnergyDeposit();
     auto particle_name = particle->GetDefinition()->GetParticleName();
+    auto dE  = step->GetTotalEnergyDeposit();
     auto pos = step->GetPreStepPoint()->GetPosition();
-    auto vel = step->GetPreStepPoint()->GetMomentumDirection();
+    //auto vel = step->GetPreStepPoint()->GetMomentumDirection();
 
 
     auto analysis = G4AnalysisManager::Instance();
     analysis->FillNtupleSColumn(0, 0, particle_name);
-    analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
-    analysis->FillNtupleIColumn(0, 2, track->GetParentID());
+    if (track->GetCreatorProcess() == NULL)
+    {
+      analysis->FillNtupleSColumn(0, 1, "user");
+    }
+    else
+    {
+      analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
+    }
+
+    //analysis->FillNtupleIColumn(0, 2, track->GetParentID());
     analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
     analysis->FillNtupleDColumn(0, 4, pos.getZ() / CLHEP::cm);
     analysis->FillNtupleDColumn(0, 5, dE / CLHEP::MeV);

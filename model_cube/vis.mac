@@ -1,7 +1,7 @@
 # ======================================================= Geometry
 /vis/geometry/set/colour Box 0 0.0 0.0 1.0 0.4
 
-/vis/geometry/set/colour World 0 1.0 1.0 1.0 0.5
+/vis/geometry/set/colour World 0 1.0 1.0 1.0 0.0
 #/vis/geometry/set/forceWireframe World
 
 # ======================================================= Objects
