@@ -180,14 +180,6 @@ G4PVPlacement* ConstructXuy(
 
 G4VPhysicalVolume* B1DetectorConstruction::Construct()
 {
-  G4double world_sizeX = 0.5 * m;   // полуразмеры мира
-  G4double world_sizeY = 0.5 * m;   // полуразмеры мира
-  G4double world_sizeZ = 0.7 * m;   // полуразмеры мира
-  //
-  G4double phantom_sizeX = 2.5 * cm; // полуразмеры фантома
-  G4double phantom_sizeY = 2.5 * cm; // полуразмеры фантома
-  G4double phantom_sizeZ = 2.5 * cm; // полуразмеры фантома
-
   G4NistManager* nist = G4NistManager::Instance();
   //
   G4Material* water = nist->FindOrBuildMaterial("G4_WATER");
@@ -198,10 +190,12 @@ G4VPhysicalVolume* B1DetectorConstruction::Construct()
   G4Material* Fe     = nist->FindOrBuildMaterial("G4_Fe");
   G4Material* Pb     = nist->FindOrBuildMaterial("G4_Pb");
   G4Material* VC = nist->FindOrBuildMaterial("G4_Galactic");
-
   //
   G4Material* world_mat = VC;
-
+  G4double world_sizeX = 0.21 * m;   // полуразмеры мира
+  G4double world_sizeY = 0.21 * m;   // полуразмеры мира
+  G4double world_sizeZ = 0.47 * m;   // полуразмеры мира
+  //
   G4Box* solidWorld = new G4Box("World", world_sizeX, world_sizeY, world_sizeZ);
   G4LogicalVolume* logicWorld = new G4LogicalVolume(solidWorld, world_mat, "World");
   G4VPhysicalVolume* physWorld = new G4PVPlacement(
@@ -615,16 +609,20 @@ G4LogicalVolume *phantoml = new G4LogicalVolume (phantom, world_mat, "phantoml")
 new G4PVPlacement (0, G4ThreeVector(0,0,(1000+5)*mm), phantoml, "phantomp", logicWorld, false, 0, checkOverlaps);
 fScoringVolume = phantoml;*/
 
+  G4double phantom_sizeX = 2.5 * cm; // полуразмеры фантома
+  G4double phantom_sizeY = 2.5 * cm; // полуразмеры фантома
+  G4double phantom_sizeZ = 1 * cm; // полуразмеры фантома
+
  G4Box* phantom = new G4Box ("Phantom",
-                            2.5*cm,
-                            2.5*cm,
-                            2.5*cm);
+                            phantom_sizeX,
+                            phantom_sizeY,
+                            phantom_sizeZ);
 
  G4LogicalVolume* phantoml = new G4LogicalVolume (phantom,
                                               water,
                                               "phantoml");
  new G4PVPlacement (0,
-                    G4ThreeVector(0,0,50.*cm), // G4ThreeVector(0,0,105.*cm)
+                    G4ThreeVector(0,0,44.*cm), // G4ThreeVector(0,0,105.*cm)
                     phantoml,
                     "phantomp",
                     logicWorld,
