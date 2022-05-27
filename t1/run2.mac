@@ -2,4 +2,4 @@
 /control/verbose 2
 /run/verbose 2
 /run/printProgress 10000
-/run/beamOn 100000000
+/run/beamOn 1000000000
