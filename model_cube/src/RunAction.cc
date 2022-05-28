@@ -20,16 +20,15 @@ RunAction::RunAction() : G4UserRunAction(), fEdep(0.), fEdep2(0.)
   auto analysis = G4AnalysisManager::Instance();
   analysis->SetDefaultFileType("csv");
 
-    analysis->SetFirstNtupleId(0);
-    analysis->SetFirstNtupleColumnId(0);
-    analysis->CreateNtuple("ParticleData", "Position");
-    analysis->CreateNtupleSColumn(0, "name");
-    analysis->CreateNtupleSColumn(0, "creator_process");
-    //analysis->CreateNtupleIColumn(0, "parentID");
-    analysis->CreateNtupleDColumn(0, "energy");
-    analysis->CreateNtupleDColumn(0, "z");
-    analysis->CreateNtupleDColumn(0, "dE");
-    analysis->FinishNtuple(0);
+/*   analysis->SetFirstNtupleId(0);
+  analysis->SetFirstNtupleColumnId(0);
+  analysis->CreateNtuple("ParticleData", "Position");
+  analysis->CreateNtupleSColumn(0, "name");
+  analysis->CreateNtupleSColumn(0, "creator_process");
+  analysis->CreateNtupleDColumn(0, "energy");
+  analysis->CreateNtupleDColumn(0, "z");
+  analysis->CreateNtupleDColumn(0, "dE");
+  analysis->FinishNtuple(0); */
 
 /*   analysis->CreateNtuple("All particles", "Data");
   analysis->CreateNtupleSColumn(0, "name");
@@ -41,6 +40,13 @@ RunAction::RunAction() : G4UserRunAction(), fEdep(0.), fEdep2(0.)
   analysis->CreateNtupleDColumn(0, "vz");
   analysis->CreateNtupleDColumn(0, "E");
   analysis->FinishNtuple(0); */
+
+  analysis->SetFirstNtupleId(0);
+  analysis->SetFirstNtupleColumnId(0);
+  analysis->CreateNtuple("ParticleData", "Position");
+  analysis->CreateNtupleSColumn(0, "name");
+  analysis->CreateNtupleDColumn(0, "energy");
+  analysis->FinishNtuple(0);
 }
 
 RunAction::~RunAction()
