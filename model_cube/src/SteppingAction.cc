@@ -21,25 +21,27 @@ SteppingAction::~SteppingAction()
 void SteppingAction::UserSteppingAction(const G4Step *step)
 {
     G4LogicalVolume *volume = step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetLogicalVolume();
-    auto track = step->GetTrack();
     if (volume->GetName() != "Box")
       return;
 
-    if (not step->IsFirstStepInVolume())
-      return;
+    //if (not step->IsFirstStepInVolume())
+    //  return;
 
-    if (not track->GetCreatorProcess() == NULL)
-      return;
+    //if (not track->GetCreatorProcess() == NULL)
+    //  return;
 
-    
+    auto track = step->GetTrack();
     auto particle = track->GetDynamicParticle();
     auto energy = particle->GetKineticEnergy();
     auto particle_name = particle->GetDefinition()->GetParticleName();
     auto dE  = step->GetTotalEnergyDeposit();
     auto pos = step->GetPreStepPoint()->GetPosition();
 
+    if (particle_name == "geantino")
+      return;
 
-/*     auto analysis = G4AnalysisManager::Instance();
+
+    auto analysis = G4AnalysisManager::Instance();
     analysis->FillNtupleSColumn(0, 0, particle_name);
     if (track->GetCreatorProcess() == NULL)
     {
@@ -49,21 +51,16 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
     {
       analysis->FillNtupleSColumn(0, 1, track->GetCreatorProcess()->GetProcessName());
     }
-
     analysis->FillNtupleDColumn(0, 2, energy / CLHEP::MeV);
     analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::cm);
     analysis->FillNtupleDColumn(0, 4, dE / CLHEP::MeV);
-    analysis->AddNtupleRow(0); */
-    auto analysis = G4AnalysisManager::Instance();
-    analysis->FillNtupleSColumn(0, 0, particle_name);
-  /*   analysis->FillNtupleDColumn(0, 1, pos.getX() / CLHEP::cm);
-    analysis->FillNtupleDColumn(0, 2, pos.getY() / CLHEP::cm);
-    analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::cm); */
-  /*   analysis->FillNtupleDColumn(0, 4, vel.getX());
-    analysis->FillNtupleDColumn(0, 5, vel.getY());
-    analysis->FillNtupleDColumn(0, 6, vel.getZ()); */
-    analysis->FillNtupleDColumn(0, 1, energy / CLHEP::MeV);
     analysis->AddNtupleRow(0);
+
+
+/*     auto analysis = G4AnalysisManager::Instance();
+    analysis->FillNtupleSColumn(0, 0, particle_name);
+    analysis->FillNtupleDColumn(0, 1, energy / CLHEP::MeV);
+    analysis->AddNtupleRow(0); */
 
 
   /*   analysis->FillNtupleSColumn(0, 0, particle_name);
