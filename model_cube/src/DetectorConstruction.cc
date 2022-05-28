@@ -62,9 +62,10 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   // == == == == == == == == == == == == == == == ==
-  // Создание водяного куба
+  // Создание объёма куба
   //
-
+  G4Material *box_material =
+    G4NistManager::Instance()->FindOrBuildMaterial("G4_POLYSTYRENE");//G4_WATER
   auto box = new G4Box("box", box_len, box_len, box_len);
   G4LogicalVolume *logic_box = new G4LogicalVolume(box, box_material, "Box");
 

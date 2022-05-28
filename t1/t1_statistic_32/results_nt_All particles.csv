@@ -1,0 +1,6 @@
+#class tools::wcsv::ntuple
+#title Data
+#separator 44
+#vector_separator 59
+#column string name
+#column double E

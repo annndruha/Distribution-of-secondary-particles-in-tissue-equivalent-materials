@@ -19,8 +19,6 @@ G4Material *world_material =
 // Параметры облучаемого объекта
 //
 constexpr G4double box_len = 20 * CLHEP::cm;
-G4Material *box_material =
-    G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
 
 
 // == == == == == == == == == == == == == == == ==

@@ -46,9 +46,9 @@ void SteppingAction::UserSteppingAction(const G4Step *step)
     }
 
     //analysis->FillNtupleIColumn(0, 2, track->GetParentID());
-    analysis->FillNtupleDColumn(0, 3, energy / CLHEP::MeV);
-    analysis->FillNtupleDColumn(0, 4, pos.getZ() / CLHEP::cm);
-    analysis->FillNtupleDColumn(0, 5, dE / CLHEP::MeV);
+    analysis->FillNtupleDColumn(0, 2, energy / CLHEP::MeV);
+    analysis->FillNtupleDColumn(0, 3, pos.getZ() / CLHEP::cm);
+    analysis->FillNtupleDColumn(0, 4, dE / CLHEP::MeV);
     analysis->AddNtupleRow(0);
 
 
