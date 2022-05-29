@@ -64,39 +64,21 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   // == == == == == == == == == == == == == == == ==
   // Создание объёма куба
   //
-/*   G4NistManager* nist = G4NistManager::Instance();
-  G4Element* H = nist->FindOrBuildElement(1);
-  G4Element* C = nist->FindOrBuildElement(6);
-  G4Element* O = nist->FindOrBuildElement(8);
-  G4Element* N = nist->FindOrBuildElement(7);
-  G4Element* K = nist->FindOrBuildElement(19);
-  G4Element* P = nist->FindOrBuildElement(15);
-  G4Element* S = nist->FindOrBuildElement(16);
-  G4Element* Mg = nist->FindOrBuildElement(12);
-  G4Element* Ca = nist->FindOrBuildElement(20);
-  G4Element* Zn = nist->FindOrBuildElement(30);
-  G4Element* Na = nist->FindOrBuildElement(11);
-  G4Element* Cl = nist->FindOrBuildElement(17);
-  G4Element* Fe = nist->FindOrBuildElement(26);
-  G4Element* Si = nist->FindOrBuildElement(14);
-  G4Element* Cr = nist->FindOrBuildElement(24);
-  G4Element* Ti = nist->FindOrBuildElement(22);
-  G4Element* Mn = nist->FindOrBuildElement(25);
-  G4Element* Ni = nist->FindOrBuildElement(28);
-  G4Element* Cu = nist->FindOrBuildElement(29);
-  G4Element* Pb = nist->FindOrBuildElement(82);
-  G4Element* Al = nist->FindOrBuildElement(13);
 
   G4Material* acrylic = new G4Material("G4_ACRYLIC", 1.19 * g / cm3, 3);
+  G4Element* H = G4NistManager::Instance()->FindOrBuildElement(1);
+  G4Element* C = G4NistManager::Instance()->FindOrBuildElement(6);
+  G4Element* O = G4NistManager::Instance()->FindOrBuildElement(8);
   acrylic->AddElement(C, 5);
   acrylic->AddElement(H, 8);
   acrylic->AddElement(O, 2);
-  G4Material *box_material = acrylic; //!!!!!!!!!!!!! */
 
 
-  G4Material *box_material =
-    G4NistManager::Instance()->FindOrBuildMaterial("G4_A-150_TISSUE"); //G4_POLYSTYRENE //G4_WATER //G4_PARAFFIN"
-  
+  //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
+  //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_POLYSTYRENE");
+  //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_PARAFFIN");
+  G4Material *box_material = acrylic;
+  //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_A-150_TISSUE");
   
   auto box = new G4Box("box", box_len, box_len, box_len);
   G4LogicalVolume *logic_box = new G4LogicalVolume(box, box_material, "Box");
