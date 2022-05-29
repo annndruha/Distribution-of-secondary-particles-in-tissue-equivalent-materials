@@ -77,8 +77,8 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_WATER");
   //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_POLYSTYRENE");
   //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_PARAFFIN");
-  G4Material *box_material = acrylic;
-  //G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_A-150_TISSUE");
+  //G4Material *box_material = acrylic;
+  G4Material *box_material = G4NistManager::Instance()->FindOrBuildMaterial("G4_A-150_TISSUE");
   
   auto box = new G4Box("box", box_len, box_len, box_len);
   G4LogicalVolume *logic_box = new G4LogicalVolume(box, box_material, "Box");
