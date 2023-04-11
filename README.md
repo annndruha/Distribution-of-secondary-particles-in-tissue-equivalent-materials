@@ -4,9 +4,9 @@
 
 Маракулин Андрей, МГУ, Физический факультет, Кафедра ускорителей и радиационной медицины, 2022 год
 
-**Текст** и **презентация** диплома располагаются в папке `Материалы`
+**Текст** и **презентация** диплома располагаются в папке [`Материалы`](https://github.com/annndruha/Distribution-of-secondary-particles-in-tissue-equivalent-materials/tree/main/%D0%9C%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D1%8B)
 
-**Код** для воспроизведения результатов располагается в папке `model_cube`. В папке `t1` находится модель ускорителя, с помощью которой можно воспроизвести спектр ускорителя, использованный для ускоренной симуляции.
+**Код** для воспроизведения результатов располагается в папке [`model_cube`](https://github.com/annndruha/Distribution-of-secondary-particles-in-tissue-equivalent-materials/tree/main/model_cube). В папке [`t1`](https://github.com/annndruha/Distribution-of-secondary-particles-in-tissue-equivalent-materials/tree/main/t1) находится модель ускорителя, с помощью которой можно воспроизвести спектр ускорителя, использованный для ускоренной симуляции.
 
 #### Пояснения для запуска кода
 
@@ -26,5 +26,6 @@
 
 * `.vscode/c_cpp_properties.json`- настраивает пути к заголовочным файлам джанта, чтобы была корректная подсветка синтаксиса.
 * `.vscode/tasks.json` добавляет возможность запускать автобилды через хоткей `ctrl+shift+b`
+
 * `scripts/autobuild_full.sh` - полностью пересобирает проект: удаляет build, выполняет cmake, make, запуск.
 * `scripts/autobuild.sh` - пересобирает при существующей папке build, не удаляет файлы, выполняет cmake, make, запуск.
